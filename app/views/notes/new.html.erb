@@ -1,0 +1,14 @@
+<h1>Note作成</h1>
+
+<%= form_for(@note) do |f| %>
+
+  <table border="1">
+    <tr>
+      <th><%= f.label :note, '名前' %></th>
+      <td><%= f.text_field :note %></td>
+    </tr>
+  </table>
+
+  <%= f.submit 'アカウントを作成する' %>
+
+<% end %>
