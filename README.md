@@ -1,25 +1,7 @@
 # README
+1. rails s  
+2. rails runner app/batch/load_text.rb
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# login
+##BackEnd
+1.  text is saved in other directory. (ex: deepKarte/RB/output/sum.txt)  
+2. extract text every five seconds  
