@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @note = @user.notes.create(note_params)
-    redirect_to article_path(@user)
+    redirect_to user_path(@user)
   end
 
   private

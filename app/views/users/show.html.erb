@@ -11,12 +11,25 @@
   </tr>
 </table>
 
+
+<%= form_for([@user, @user.notes.build]) do |f| %>
+  <p>
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
 <% @user.notes.each do |note| %>
   <p>
     <%= note.note %>
   </p>
 
 <% end %>
+
 
 
 
