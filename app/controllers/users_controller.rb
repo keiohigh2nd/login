@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :delete]
   before_action :correct_user, only: [:edit, :update, :show]
+  before_action :detect_devise_variant
 
   def index
     #@users = User.all
@@ -45,4 +46,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user)
     end
+
+    def detect_devise_variant
+            case request.user_agent
+            when /iPad/
+                request.variant = :tablet
+            when /iPhone/
+                request.variant = :mobile
+            end
+    end
+
 end

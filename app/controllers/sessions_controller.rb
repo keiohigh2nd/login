@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :detect_devise_variant
   def new
   end
 
@@ -16,4 +17,14 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to new_session_path
   end
+
+  private
+    def detect_devise_variant
+            case request.user_agent
+            when /iPad/
+                request.variant = :tablet
+            when /iPhone/
+                request.variant = :mobile
+            end
+    end
 end
