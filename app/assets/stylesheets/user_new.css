@@ -1,0 +1,29 @@
+
+.main {
+  float: left;
+  width: 800px;
+  margin-left: 100px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+} 
+
+.box_srcollbar {
+  overflow:auto;
+  width:300px;
+  height:80px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding:5px;
+  margin-left: 100px;
+  border:1px solid #000000;
+  background-color:#F9F9F9;
+  color:#000;
+  font-size:12px;
+}
+
+.exp {
+  margin-bottom: 50px;
+  font-family: "ＭＳ Ｐゴシック",sans-serif;
+  font-size: 80%;
+  font-size: 1.5em;
+}
