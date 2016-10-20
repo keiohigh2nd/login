@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   before_action :detect_devise_variant
   def new
+    if signed_in?
+      user = current_user
+      redirect_to user
+    end
   end
 
   def create

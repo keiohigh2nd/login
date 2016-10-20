@@ -1,18 +1,20 @@
-<h1>ログイン</h1>
+<%= stylesheet_link_tag "home", :media => "all" %>
 
-<%= form_for(:session, url: sessions_path) do |f| %>
+<div class="exp">
+  不幸にも外出先でお一人で倒れた場合に、あなたの緊急連絡先やお体に関する情報をお預かりします。
+　その情報をもとに、医師が検索します。<br>
+ <%= image_tag '/images/home_explain.png' %>
+ <%= link_to 'アカウント作成', signup_path, class:"btn btn-default navbar-btn navbar-right"%>
+</div>
 
-  <table border="1">
-    <tr>
-      <th><%= f.label :email, '名前' %></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password, '4ケタ番号' %></th>
-      <td><%= f.password_field :password %></td>
-    </tr>
-  </table>
+<div class="login">
+  <%= form_for(:session, url: sessions_path) do |f| %>
 
-  <%= f.submit 'ログインする' %>
+      <%= f.label :email, '名前' %><br>
+      <%= f.text_field :email ,class:"form-control",placeholder:"名前"%><br>
+      <%= f.label :password, '5ケタ番号' %><br>
+      <%= f.password_field :password,class:"form-control",placeholder:"5ケタ番号" %><br>
 
-<% end %>
+    <%= f.submit 'ログインする' %>
+  <% end %>
+</div>

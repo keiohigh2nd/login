@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( user_home.css )
 Rails.application.config.assets.precompile += %w( user_new.css )
+Rails.application.config.assets.precompile += %w( home.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
