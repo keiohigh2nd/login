@@ -9,6 +9,7 @@
 <body>
 <nav class="navbar navbar-default">
   <a class="navbar-brand" href="#">QShare</a>
+    <%= link_to 'Who we are', 'qbase', class:"btn btn-default navbar-btn navbar-right"%>
   <% if signed_in? %>
     <%= link_to 'ログアウト', signout_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>
     <%= link_to 'プロフィール', current_user, class:"btn btn-default navbar-btn navbar-right" %>
