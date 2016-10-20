@@ -1,41 +1,14 @@
-<h1>ユーザ情報</h1>
+<%= stylesheet_link_tag "user_home", :media => "all" %>
 
-<table border="1">
-  <tr>
-    <th>緊急連絡先</th>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <th>名前</th>
-    <td><%= @user.email %></td>
-  </tr>
-</table>
+<div class="main">
+      <h2>緊急連絡先:
+      <%= @user.name %></h2>
+      <h2>名前:
+      <%= @user.email %></h2>
+</div>
 
-
-<%= form_for([@user, @user.notes.build]) do |f| %>
-  <p>
-    <%= f.label :note %><br>
-    <%= f.text_area :note %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-
-
-<%= form_for([@user, @user.questions.build]) do |f| %>
-  <p>
-    <%= f.label :question %><br>
-    <%= f.text_area :life %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<% @user.questions.each do |question| %>
-  <div  class="container">
+<div class="ample">
+  <% @user.questions.each do |question| %>
     <table class="table table-striped table-bordered">
       <tr>
         <td>
@@ -43,14 +16,50 @@
         </td>
       </tr>
     </table>
-  </div>
+  <% end %>
 
-<% end %>
+  <%= form_for([@user, @user.questions.build]) do |f| %>
+  <p>
+    <%= f.label :既往歴 %><br>
+    <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん" %>
+  </p>
+  <p>
+    <%= f.label :家族歴 %><br>
+    <%= f.text_area :life ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
+  </p>
+  <p>
+    <%= f.label :アレルギー %><br>
+    <%= f.text_area :life ,class:"form-control",placeholder:"花粉、風邪薬"%>
+  </p>
+  <p>
+    <%= f.label :今飲んでるお薬 %><br>
+    <%= f.text_area :life ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
+  </p>
+  <p>
+    <%= f.label :生活について%><br>
+    <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
 
 
+</div>
 
-<% @user.notes.each do |note| %>
-  <div  class="container">
+<div class="notes">
+  <%= form_for([@user, @user.notes.build]) do |f| %>
+  <p>
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+
+
+  <% @user.notes.each do |note| %>
     <table class="table table-striped table-bordered">
       <tr>
         <td>
@@ -61,14 +70,12 @@
         </td>
       </tr>
     </table>
-  </div>
+  <% end %>
 
-<% end %>
-
-
+</div>
 
 
 
 <% if current_user?(@user) %>
-<p><%= link_to 'ユーザー情報の編集', edit_user_path %></p>
+<p><%= link_to 'ユーザー情報の編集', edit_user_path, class: "btn btn-lg btn-primary"%></p>
 <% end %>

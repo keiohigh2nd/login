@@ -1,0 +1,18 @@
+
+.main {
+  float: left;
+  width: 900px;
+  margin-left: 400px;
+  margin-bottom: 100px;
+} 
+
+
+.ample {
+  float: left;
+  width: 500px;
+}
+
+.notes {
+  float: right;
+  width: 500px;
+}
