@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Qshare</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <nav class="navbar navbar-default">
-  <a class="navbar-brand" href="#">QShare</a>
+  <a class="navbar-brand" href="/signin">QShare</a>
     <%= link_to 'Who we are', 'qbase', class:"btn btn-default navbar-btn navbar-right"%>
   <% if signed_in? %>
     <%= link_to 'ログアウト', signout_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>

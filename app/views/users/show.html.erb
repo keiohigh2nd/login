@@ -11,13 +11,33 @@
   <% @user.questions.each do |question| %>
     <table class="table table-striped table-bordered">
       <tr>
-        <td>
-            <%= question.life %>
-        </td>
+        <td align="center"> 既往歴 </td>
+        <td align="center"><%= question.past %></td>
       </tr>
+      <tr>
+        <td align="center"> 家族歴 </td>
+        <td align="center"><%= question.family %></td>
+      </tr>
+      <tr>
+        <td align="center"> アレルギー </td>
+        <td align="center"><%= question.alle %></td>
+      </tr>
+      <tr>
+        <td align="center"> 今飲んでるお薬 </td>
+        <td align="center"><%= question.pharm %></td>
+      </tr>
+      <tr>
+        <td align="center"> 生活について </td>
+        <td align="center"><%= question.life %></td>
+      </tr>
+       <% @question_user = question.user_id
+       @question_id = question.id
+       @url = "/users/#{question.user_id}/questions/#{question.id}/edit"%>
     </table>
+    <%= link_to 'Edit',  "#{@url}" , class: "btn btn-primary btn-md" %><br>
   <% end %>
 
+<% if @user.questions.length == 0 %>
   <%= form_for([@user, @user.questions.build]) do |f| %>
   <p>
     <%= f.label :既往歴 %><br>
@@ -25,15 +45,15 @@
   </p>
   <p>
     <%= f.label :家族歴 %><br>
-    <%= f.text_area :life ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
+    <%= f.text_area :family ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
   </p>
   <p>
     <%= f.label :アレルギー %><br>
-    <%= f.text_area :life ,class:"form-control",placeholder:"花粉、風邪薬"%>
+    <%= f.text_area :alle ,class:"form-control",placeholder:"花粉、風邪薬"%>
   </p>
   <p>
     <%= f.label :今飲んでるお薬 %><br>
-    <%= f.text_area :life ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
+    <%= f.text_area :pharm ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
   </p>
   <p>
     <%= f.label :生活について%><br>
@@ -43,7 +63,9 @@
     <%= f.submit :登録 %>
   </p>
   <% end %>
-
+<% else %>
+    <p></p>
+<% end %>
 
 </div>
 

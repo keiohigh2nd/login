@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @user = User.find(params[:user_id])
+    #@questions = Question.all
   end
 
   # GET /questions/1
@@ -19,6 +20,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @question = Question.find(params[:id])
   end
 
   # POST /questions

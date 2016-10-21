@@ -23,7 +23,7 @@
   その情報は、今まで患った病気や現在お飲みの薬などの情報だけで十分です。<br>
 
   治療の最初のステップがスムーズに行われるためにも、そのために必要最低限の情報を登録しておきましょう。<br>
-  倒れた時に必ず持っている健康保健書の名前（名字だけ）と健康保険証の下5けただけです。<br>
+  倒れた時に必ず持っている健康保健書の名前（名字だけ）と健康保険証/もしなければ運転免許証の下5けただけです。<br>
   我々はその情報を高いセキュリティで安全に管理し、医療従事者の皆様にお伝えします。<br>
   </div>
 
@@ -35,7 +35,7 @@
       <%= f.text_field :email ,class:"form-control",placeholder:"苗字だけにしてください" %>
 
       <%= f.label :password, 'パスワード' %>
-      <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証の下4ケタで" %>
+      <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証/運転免許証の下4ケタで" %>
 
       <%= f.label :password_confirmation, '確認' %>
       <%= f.password_field :password_confirmation ,class:"form-control",placeholder:"もう一度パスワードの確認" %>
