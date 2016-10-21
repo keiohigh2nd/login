@@ -46,7 +46,8 @@
     <%= f.text_area :pharm, value: @question.pharm %>
   </div>
 
+  <% @question.destroy %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '更新する' %>
   </div>
 <% end %>

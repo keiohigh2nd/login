@@ -34,7 +34,7 @@
        @question_id = question.id
        @url = "/users/#{question.user_id}/questions/#{question.id}/edit"%>
     </table>
-    <%= link_to 'Edit',  "#{@url}" , class: "btn btn-primary btn-md" %><br>
+    <%= link_to '登録情報の編集',  "#{@url}" , class: "btn btn-primary btn-md" %><br>
   <% end %>
 
 <% if @user.questions.length == 0 %>
