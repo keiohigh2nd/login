@@ -1,0 +1,20 @@
+
+.main {
+  float: left;
+  width: 900px;
+  margin-left: 400px;
+  margin-bottom: 100px;
+} 
+
+
+.ample {
+  float: left;
+  width: 450px;
+  margin-left: 20px;
+}
+
+.notes {
+  float: right;
+  width: 450px;
+  margin-right: 20px;
+}

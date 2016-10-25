@@ -1,0 +1,53 @@
+<%= form_for([@user, @user.questions.build]) do |f|  %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id , value: @question.user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :question_date %>
+    <%= f.date_select :question_date, value: @question.created_at  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :life %>
+    <%= f.text_area :life, value: @question.life %>
+  </div>
+
+  <div class="field">
+    <%= f.label :past %>
+    <%= f.text_area :past, value: @question.past %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family %>
+    <%= f.text_area :family, value: @question.family %>
+  </div>
+
+  <div class="field">
+    <%= f.label :alle %>
+    <%= f.text_area :alle, value: @question.alle %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pharm %>
+    <%= f.text_area :pharm, value: @question.pharm %>
+  </div>
+
+  <% @question.destroy %>
+  <div class="actions">
+    <%= f.submit '更新する' %>
+  </div>
+<% end %>

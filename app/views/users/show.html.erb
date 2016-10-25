@@ -1,0 +1,129 @@
+<%= stylesheet_link_tag "user_home", :media => "all" %>
+
+<div class="main">
+      <h2>緊急連絡先:
+      <%= @user.name %></h2>
+      <h2>名前:
+      <%= @user.email %></h2>
+</div>
+
+<div class="ample">
+  <% @user.questions.each do |question| %>
+    <table class="table table-striped table-bordered">
+      <tr>
+        <td align="center"> 既往歴 </td>
+        <td align="center"><%= question.past %></td>
+      </tr>
+      <tr>
+        <td align="center"> 家族歴 </td>
+        <td align="center"><%= question.family %></td>
+      </tr>
+      <tr>
+        <td align="center"> アレルギー </td>
+        <td align="center"><%= question.alle %></td>
+      </tr>
+      <tr>
+        <td align="center"> 今飲んでるお薬 </td>
+        <td align="center"><%= question.pharm %></td>
+      </tr>
+      <tr>
+        <td align="center"> 生活について </td>
+        <td align="center"><%= question.life %></td>
+      </tr>
+       <% @question_user = question.user_id
+       @question_id = question.id
+       @url = "/users/#{question.user_id}/questions/#{question.id}/edit"%>
+    </table>
+    <%= link_to '登録情報の編集',  "#{@url}" , class: "btn btn-primary btn-md" %><br>
+  <% end %>
+
+<% if @user.questions.length == 0 %>
+  <%= form_for([@user, @user.questions.build]) do |f| %>
+  <p>
+    <%= f.label :既往歴 %><br>
+    <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん" %>
+  </p>
+  <p>
+    <%= f.label :家族歴 %><br>
+    <%= f.text_area :family ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
+  </p>
+  <p>
+    <%= f.label :アレルギー %><br>
+    <%= f.text_area :alle ,class:"form-control",placeholder:"花粉、風邪薬"%>
+  </p>
+  <p>
+    <%= f.label :今飲んでるお薬 %><br>
+    <%= f.text_area :pharm ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
+  </p>
+  <p>
+    <%= f.label :生活について%><br>
+    <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
+  </p>
+  <p>
+    <%= f.submit :登録 %>
+  </p>
+  <% end %>
+<% else %>
+    <p></p>
+<% end %>
+
+</div>
+
+<div class="notes">
+  <%= form_for([@user, @user.notes.build]) do |f| %>
+  <p>
+    <%= f.label :メモ %><br>
+    <%= f.text_area :note %>
+  </p>
+  <p>
+    <% if signed_in_doctor? %>
+       <%= f.hidden_field :flag, :value => 2 %>
+         2
+       <% else %>
+       <%= f.hidden_field :flag, :value => 1 %>
+	 1
+    <% end %>
+   
+    <%= f.submit :書く %>
+  </p>
+  <% end %>
+
+
+  <% @user.notes.each do |note| %>
+     <% if note.flag == 2 %>
+        <div class="doctor">
+            Doctor ->
+            <%= note.note %>
+            <%= note.flag %>
+        </div>
+      <% else %>
+       <div class="patient">
+            Patient ->
+            <%= note.note %>
+            <%= note.flag %>
+        </div>
+      <% end %>
+ 
+  <% end %>
+
+  <% if current_user?(@user) %>
+    <p><%= link_to 'ユーザー情報の編集', edit_user_path, class: "btn btn-primary btn-md"%></p>
+  <% end %>
+</div>
+
+<div class="fav">
+
+<%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
+  <%= check_box_tag :fav %>
+  <%= submit_tag("お気に入り") %>
+<% end %>
+
+  ---------
+  お気に入りのドクター
+  <% @user.doctors.each do |ud| %>
+    <%= ud.id %>
+  <% end %>
+  ---------
+
+</div>
+

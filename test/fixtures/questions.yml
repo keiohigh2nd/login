@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  question_date: 2016-10-11
+  life: MyText
+  past: MyText
+  family: MyText
+  alle: MyText
+  pharm: MyText
+
+two:
+  user_id: 1
+  question_date: 2016-10-11
+  life: MyText
+  past: MyText
+  family: MyText
+  alle: MyText
+  pharm: MyText

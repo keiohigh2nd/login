@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Qshare</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <a class="navbar-brand" href="/signin">QShare</a>
+  <%= link_to 'Who we are', 'qbase', class:"btn btn-default navbar-btn navbar-right"%>
+  <% if signed_in_doctor? %>
+    <a class="navbar-brand" href="#">Welcome doctor</a>
+    <%= link_to 'Doctorログアウト', signout_doctor_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>
+  <% else %>
+    <% if signed_in? %>
+      <%= link_to 'ログアウト', signout_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>
+      <%= link_to 'プロフィール', current_user, class:"btn btn-default navbar-btn navbar-right" %>
+    <% else %>
+      <%= link_to 'ログイン', signin_path , class:"btn btn-default navbar-btn navbar-right"%>
+      <%= link_to 'Doctor ログイン', signin_doctor_path , class:"btn btn-default navbar-btn navbar-right"%>
+      <%= link_to 'アカウント作成', signup_path, class:"btn btn-default navbar-btn navbar-right"%>
+    <% end %>
+  <% end %>
+</nav>
+<hr>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<%= stylesheet_link_tag "user_new", :media => "all" %>
+
+<style type="text/css">
+    .box_srcollbar {
+        overflow:auto;
+        width:300px;
+        height:80px;
+        padding:5px;
+        border:1px solid #F9F9F9;
+        background-color:#F9F9F9;
+        color:#000;
+        font-size:12px;
+    }
+</style>
+
+<h3>情報を登録する</h3>
+
+<div class="main">
+  <div class="exp">
+  不幸にも一人で突然事故にあった場合やご家族が外出先で一人で事故にあった場合、医療従事者はその方の健康や緊急連絡先について全く知りません。<br>
+  そのため緊急連絡先や身体情報について他の病院に直接お伺いすることがあります。<br>
+  しかしそれらの情報を事前に医療従事者が把握していれば、より早く治療ができます。<br>
+  その情報は、今まで患った病気や現在お飲みの薬などの情報だけで十分です。<br>
+
+  治療の最初のステップがスムーズに行われるためにも、そのために必要最低限の情報を登録しておきましょう。<br>
+  倒れた時に必ず持っている健康保健書の名前（名字だけ）と健康保険証/もしなければ運転免許証の下5けただけです。<br>
+  我々はその情報を高いセキュリティで安全に管理し、医療従事者の皆様にお伝えします。<br>
+  </div>
+
+<%= form_for(@user) do |f| %>
+      <%= f.label :name, '緊急連絡先'%>
+      <%= f.text_field :name ,class:"form-control",placeholder:"ご家族の携帯電話番号など" %>
+
+      <%= f.label :email, '名前' %>
+      <%= f.text_field :email ,class:"form-control",placeholder:"苗字だけにしてください" %>
+
+      <%= f.label :password, 'パスワード' %>
+      <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証/運転免許証の下4ケタで" %>
+
+      <%= f.label :password_confirmation, '確認' %>
+      <%= f.password_field :password_confirmation ,class:"form-control",placeholder:"もう一度パスワードの確認" %>
+
+  <div class="box_srcollbar">
+    このシステムでは一切お金はかかりません。また緊急時に閲覧するのは医師のみです。
+    このシステムに同意する有無の同意書の内容をここに記す
+  </div>
+
+
+  <div class="well">
+  この規約に同意する場合は、チェックを入れてください <br>
+  <%= f.check_box :agreement %>　同意します
+  </div>
+  <%= f.submit 'アカウントを作成する' %>
+     <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+
+<% end %>
+
+</div>
