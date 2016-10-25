@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
  def favorite
       @user = User.find(params[:id])
       @doctor = current_doctor
@@ -46,8 +45,6 @@ class UsersController < ApplicationController
   end
 
 
-=======
->>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
   private
 
     def user_params
@@ -56,7 +53,6 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-<<<<<<< HEAD
       @doctor = current_doctor
       redirect_to root_url unless current_user?(@user) or current_doctor?(@doctor)
     end
@@ -67,11 +63,6 @@ class UsersController < ApplicationController
     end
 
 
-=======
-      redirect_to root_url unless current_user?(@user)
-    end
-
->>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
     def detect_devise_variant
             case request.user_agent
             when /iPad/

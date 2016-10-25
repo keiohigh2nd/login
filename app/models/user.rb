@@ -10,11 +10,8 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_secure_password
 
-<<<<<<< HEAD
   has_many :favorites
   has_many :doctors, through: :favorites
-=======
->>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
 
   def check_agreement
     if agreement.present?
