@@ -9,6 +9,7 @@
 <body>
 <nav class="navbar navbar-default">
   <a class="navbar-brand" href="/signin">QShare</a>
+<<<<<<< HEAD
   <%= link_to 'Who we are', 'qbase', class:"btn btn-default navbar-btn navbar-right"%>
   <% if signed_in_doctor? %>
     <a class="navbar-brand" href="#">Welcome doctor</a>
@@ -22,6 +23,15 @@
       <%= link_to 'Doctor ログイン', signin_doctor_path , class:"btn btn-default navbar-btn navbar-right"%>
       <%= link_to 'アカウント作成', signup_path, class:"btn btn-default navbar-btn navbar-right"%>
     <% end %>
+=======
+    <%= link_to 'Who we are', 'qbase', class:"btn btn-default navbar-btn navbar-right"%>
+  <% if signed_in? %>
+    <%= link_to 'ログアウト', signout_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>
+    <%= link_to 'プロフィール', current_user, class:"btn btn-default navbar-btn navbar-right" %>
+  <% else %>
+    <%= link_to 'ログイン', signin_path , class:"btn btn-default navbar-btn navbar-right"%>
+    <%= link_to 'アカウント作成', signup_path, class:"btn btn-default navbar-btn navbar-right"%>
+>>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
   <% end %>
 </nav>
 <hr>

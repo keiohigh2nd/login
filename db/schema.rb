@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161025162014) do
+=======
+ActiveRecord::Schema.define(version: 20161021074136) do
+>>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -19,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161025162014) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -39,13 +44,18 @@ ActiveRecord::Schema.define(version: 20161025162014) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+=======
+>>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
   create_table "notes", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "note_date"
     t.text     "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.integer  "flag"
+=======
+>>>>>>> 8e8e1ad165ff0211b4502d055cb1561fa0495e4d
   end
 
   create_table "questions", force: :cascade do |t|
