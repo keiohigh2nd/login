@@ -1,4 +1,4 @@
-<h1>ユーザ情報</h1>
+<h1>医師情報</h1>
 
 <table border="1">
 
@@ -11,6 +11,24 @@
     <td><%= @doctor.email %></td>
   </tr>
 </table>
+
+<% if not signed_in_doctor? %>
+  <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
+    <%= submit_tag("お気に入り") %>
+  <% end %>
+<% end %>
+
+  <% if @doctor.openflag == 0 %>
+    <%= form_tag({controller: "doctors", action: "open" }, {method: "get"}) do %>
+      <%= submit_tag("Open") %>
+    <% end %>
+  <% else %>
+    <%= form_tag({controller: "doctors", action: "close" }, {method: "get"}) do %>
+      <%= check_box_tag :fav %>
+      <%= submit_tag("Close") %>
+    <% end %>
+  <% end %>
+
 
 <% if current_doctor=(@doctor) %>
 <p><%= link_to '編集', edit_doctor_path %></p>

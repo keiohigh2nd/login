@@ -1,0 +1,8 @@
+
+<h1>ユーザ一覧</h1>
+
+<ul class="list-group">
+  <% @users.each do |user| %>
+  <li class="list-group-item"><%= link_to user.name, user %></li>
+  <% end %>
+</ul>

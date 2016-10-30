@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :notes, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :alerts, dependent: :destroy
   has_secure_password
 
   has_many :favorites

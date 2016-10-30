@@ -3,7 +3,7 @@ class DoctorsController < ApplicationController
   before_action :correct_doctor, only: [:edit, :update]
 
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.search(params[:search])
   end
 
   def show
@@ -15,6 +15,20 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+  end
+
+  def open
+    @doctor = Doctor.find(params[:id])
+    @doctor.openflag = 1
+    @doctor.save
+    redirect_to @doctor
+  end
+
+  def close
+    @doctor = Doctor.find(params[:id])
+    @doctor.openflag = 0
+    @doctor.save
+    redirect_to @doctor
   end
 
   def create

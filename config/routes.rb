@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :alerts
   resources :articles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:index, :show, :new, :edit, :create, :update] do
+    resources :alerts
     resources :notes
     resources :questions
     member do
@@ -9,7 +11,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :doctors, only: [:index, :show, :new, :edit, :create, :update]
+  resources :doctors, only: [:index, :show, :new, :edit, :create, :update] do
+    resources :calls
+    member do
+      get 'open'
+      get 'close'
+    end
+  end
   
 
   resources :sessions, only: [:new, :create, :destroy]

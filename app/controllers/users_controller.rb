@@ -1,14 +1,22 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :delete]
   before_action :correct_user, only: [:edit, :update, :show]
+  #before_action :correct_doctor, only: [:edit, :update, :show]
   before_action :detect_devise_variant
 
   def index
-    #@users = User.all
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    if signed_in_doctor?
+      @doctors = @user.doctors
+      @doctor = current_doctor
+      if not @doctors.exists?(@doctor)
+        redirect_to doctors_url
+      end
+    end
   end
 
   def new
@@ -37,8 +45,8 @@ class UsersController < ApplicationController
   end
 
  def favorite
-      @user = User.find(params[:id])
-      @doctor = current_doctor
+      @user = current_user
+      @doctor = Doctor.find(params[:id])
       @user.favorites.create(doctor: @doctor)
       @user.save
       redirect_to @user
@@ -55,13 +63,20 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @doctor = current_doctor
       redirect_to root_url unless current_user?(@user) or current_doctor?(@doctor)
+      #This part decides who to watch the show page
+      #redirect_to root_url unless current_user?(@user) or current_doctor?(@doctor)
     end
 
     def correct_doctor
-      signed_in_doctor
-      redirect_to root_url
+      @user = User.find(params[:id])
+      @doctors = @user.doctors
+      @doctor = current_doctor
+      if not @doctors.exists?(@doctor)
+        redirect_to root_url
+      else
+        redirect_to @user
+      end
     end
-
 
     def detect_devise_variant
             case request.user_agent

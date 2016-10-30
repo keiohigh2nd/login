@@ -1,7 +1,18 @@
-<h1>ユーザ一覧</h1>
+<h1>医師一覧</h1>
 
-<ul>
+<%= form_tag doctors_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<ul class="list-group">
   <% @doctors.each do |doctor| %>
-  <li><%= link_to doctor.name, doctor %></li>
+  <li class="list-group-item"><%= link_to doctor.name, doctor %>
+  <% if doctor.openflag == 1 %>
+    <span class="badge">Open</span>
+  <% end %>
+  </li>
   <% end %>
 </ul>
