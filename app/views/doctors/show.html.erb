@@ -1,16 +1,23 @@
-<h1>医師情報</h1>
+<%= stylesheet_link_tag "doctor_home", :media => "all" %>
 
-<table border="1">
+<div class="main">
+    <h2>名前
+    <%= @doctor.name %></h2>
+    <% if current_doctor=(@doctor) %>
+      <p><%= link_to '編集', edit_doctor_path, class: "btn btn-primary btn-md" %></p>
+    <% end %>
 
-  <tr>
-    <th>名前</th>
-    <td><%= @doctor.name %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @doctor.email %></td>
-  </tr>
-</table>
+    <% if @doctor.openflag == 0 %>
+      <%= form_tag({controller: "doctors", action: "open" }, {method: "get"}) do %>
+        <%= submit_tag("Open") %>
+      <% end %>
+    <% else %>
+      <%= form_tag({controller: "doctors", action: "close" }, {method: "get"}) do %>
+        <%= submit_tag("Close") %>
+      <% end %>
+    <% end %>
+</div>
+
 
 <% if not signed_in_doctor? %>
   <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
@@ -18,18 +25,12 @@
   <% end %>
 <% end %>
 
-  <% if @doctor.openflag == 0 %>
-    <%= form_tag({controller: "doctors", action: "open" }, {method: "get"}) do %>
-      <%= submit_tag("Open") %>
-    <% end %>
-  <% else %>
-    <%= form_tag({controller: "doctors", action: "close" }, {method: "get"}) do %>
-      <%= check_box_tag :fav %>
-      <%= submit_tag("Close") %>
-    <% end %>
-  <% end %>
 
-
+<div class="patient">
 <% if current_doctor=(@doctor) %>
-<p><%= link_to '編集', edit_doctor_path %></p>
+  <h2>担当患者</h2>
+  <% @doctor.users.each do |user| %>
+    <%= link_to user.id, { :controller => :users, :action => :show, :id => user.id } %>
+  <% end %>
 <% end %>
+</div>

@@ -11,7 +11,7 @@
   <a class="navbar-brand" href="/signin">QShare</a>
   <%= link_to 'Who we are', hreg="/qbase", class:"btn btn-default navbar-btn navbar-right"%>
   <% if signed_in_doctor? %>
-    <a class="navbar-brand" href="#">Welcome doctor</a>
+    <%= link_to "Welcome Doctor", { :controller => :doctors, :action => :show, :id => current_doctor.id }, class:"btn btn-default navbar-btn navbar-right" %>
     <%= link_to 'Doctorログアウト', signout_doctor_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>
   <% else %>
     <% if signed_in? %>

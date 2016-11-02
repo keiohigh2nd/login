@@ -5,6 +5,13 @@
       <%= @user.name %></h2>
       <h2>名前:
       <%= @user.email %></h2>
+          <% @notification = "#{@user.pushs.length}件の通知" %>
+          <% @url_push = "/users/#{@user.id}/pushes"%>
+      <%= link_to "#{@notification}", "#{@url_push}", value:1 %>
+      <%= link_to "医師検索", { :controller => :doctors, :action => :index } %>
+
+
+      
 </div>
 
 <div class="ample">
@@ -132,6 +139,10 @@
 
 <div class="alert">
   <%= form_for([@user, @user.alerts.build]) do |f| %>
+  <p>
+    <%= f.label :タイトル %><br>
+    <%= f.text_area :title ,class:"form-control", placeholder:"タイトル" %>
+  </p>
   <p>
     <%= f.label :内容 %><br>
     <%= f.text_area :context ,class:"form-control", placeholder:"アラート作成" %>

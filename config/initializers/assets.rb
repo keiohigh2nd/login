@@ -7,6 +7,7 @@ Rails.application.config.assets.precompile += %w( user_home.css )
 Rails.application.config.assets.precompile += %w( user_new.css )
 Rails.application.config.assets.precompile += %w( home.css )
 Rails.application.config.assets.precompile += %w( article_show.css ) 
+Rails.application.config.assets.precompile += %w( doctor_home.css )
 
 
 # Add additional assets to the asset load path

@@ -1,0 +1,15 @@
+
+.main {
+  float: left;
+  width: 900px;
+  margin-left: 400px;
+  margin-bottom: 100px;
+} 
+
+
+.patient {
+  width: 700px;
+  float: left;
+  margin-left: 20px;
+}
+

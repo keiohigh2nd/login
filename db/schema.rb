@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030061754) do
+ActiveRecord::Schema.define(version: 20161030095631) do
 
   create_table "alerts", force: :cascade do |t|
     t.string   "title"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20161030061754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "flag"
+  end
+
+  create_table "pushes", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "when"
+    t.integer  "user_id"
+    t.string   "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|

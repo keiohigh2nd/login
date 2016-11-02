@@ -27,6 +27,8 @@ class AlertsController < ApplicationController
     @user = User.find(params[:user_id])
     @alert = @user.alerts.new(alert_params)
     @alert.save
+    @push = @user.pushs.new(push_params)
+    @push.save
     redirect_to user_path(@user)
   end
 
@@ -63,5 +65,9 @@ class AlertsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def alert_params
       params.require(:alert).permit(:title, :context, :when, :user_id, :doctor_id)
+    end
+
+    def push_params
+      params.require(:alert).permit(:title, :when, :user_id, :doctor_id)
     end
 end
