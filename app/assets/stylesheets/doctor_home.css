@@ -1,9 +1,9 @@
 
 .main {
   float: left;
-  width: 300px;
-  margin-left: 400px;
-  margin-bottom: 100px;
+  width: 400px;
+  margin-left: 50px;
+  margin-bottom: 40px;
 } 
 
 
@@ -14,6 +14,12 @@
 }
 
 .open_tag {
+  width: 450px;
+  float: right;
+  margin-left: 20px;
+}
+
+.f_button {
   width: 250px;
   float: right;
   margin-left: 20px;

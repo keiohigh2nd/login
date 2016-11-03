@@ -13,31 +13,36 @@
     }
 </style>
 
-<h3>情報を登録する</h3>
 
 <div class="main">
   <div class="exp">
-  不幸にも一人で突然事故にあった場合やご家族が外出先で一人で事故にあった場合、医療従事者はその方の健康や緊急連絡先について全く知りません。<br>
-  そのため緊急連絡先や身体情報について他の病院に直接お伺いすることがあります。<br>
-  しかしそれらの情報を事前に医療従事者が把握していれば、より早く治療ができます。<br>
-  その情報は、今まで患った病気や現在お飲みの薬などの情報だけで十分です。<br>
-
-  治療の最初のステップがスムーズに行われるためにも、そのために必要最低限の情報を登録しておきましょう。<br>
-  倒れた時に必ず持っている健康保健書の名前（名字だけ）と健康保険証/もしなければ運転免許証の下5けただけです。<br>
-  我々はその情報を高いセキュリティで安全に管理し、医療従事者の皆様にお伝えします。<br>
+    <h3>かかりつけ医はいますか？</h3>
+    自分の健康を見てくれる専属で見てくれる医師がいますか？<br>
+　　かかりつけ医がいると、自身の病歴や体質・生活習慣などを踏まえた診察を受けられます。<br>
+　　またあなたの病気だけではなく、仕事のことや家族のことを理解して治療してくれるお医者さんです。<br>
+　　更に必要に応じて適切な専門医や病院を紹介してもらえます。　
+  </div>
+  <div class="chat">
+    <h3>気になる症状をどうしてますか</h3>
+  　かかりつけ医を見つけたら、チャットによる相談ができます。「病院に行くほどではないが、気になる症状」がある時なども、聞くことができます。
+  </div>
+  <div class="sumup">
+    <h3>医療情報を簡単にまとめます</h3>
+    あなたの医療情報を医師との会話も含めて全て綺麗にまとめます。その情報を用いて、あなたは別の病院に行くときに別の医師に簡単に自分のことを見せられます。またもし、あなたが交通事故などで意識を失った場合、搬送先の医師があなたの健康保険証or運転免許証の5桁でアクセスできるようになります。
   </div>
 
+
 <%= form_for(@user) do |f| %>
-      <%= f.label :name, '名前'%>
-      <%= f.text_field :name ,class:"form-control",placeholder:"適当なIDを決めてください" %>
+      <%= f.label :name, 'お名前'%>
+      <%= f.text_field :name ,class:"form-control",placeholder:"匿名性にするか" %>
 
       <%= f.label :email, 'メールアドレス' %>
-      <%= f.text_field :email ,class:"form-control",placeholder:"健康保険証の下5桁" %>
+      <%= f.text_field :email ,class:"form-control",placeholder:"メールアドレス" %>
 
       <%= f.label :emergence, '緊急連絡先' %>
-      <%= f.text_field :emergence ,class:"form-control",placeholder:"あなたにもしものことがあった場合の" %>
+      <%= f.text_field :emergence ,class:"form-control",placeholder:"母や息子などの電話番号" %>
 
-      <%= f.label :adress, 'Place' %>
+      <%= f.label :adress, '希望する地域や場所' %>
       <%= f.text_field :adress ,class:"form-control",placeholder:"最寄駅やお住いの場所など" %>
 
       <%= f.label :password, 'パスワード' %>

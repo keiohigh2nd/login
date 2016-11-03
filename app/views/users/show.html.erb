@@ -99,22 +99,21 @@
 </div>
 
 <div class="notes">
-  <%= form_for([@user, @user.notes.build]) do |f| %>
   <p>
+  <%= form_for([@user, @user.notes.build]) do |f| %>
     <%= f.label :メモ %><br>
     <%= f.text_area :note ,class:"form-control",placeholder:"ご気分はどうですか" %>
-  </p>
-  <p>
+
     <% if signed_in_doctor? %>
        <%= f.hidden_field :flag, :value => 2 %>
     <% else %>
        <%= f.hidden_field :flag, :value => 1 %>
     <% end %>
-   
-    <%= f.submit :書く %>
-  </p>
+    <div class="f_button">
+      <%= f.submit :書く %>
+    </div>
   <% end %>
-
+  </p>
 
   <div class="talk">
   <% @user.notes.each do |note| %>

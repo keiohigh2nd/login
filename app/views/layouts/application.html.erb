@@ -18,7 +18,7 @@
       <%= link_to 'プロフィール', current_user, class:"btn btn-default navbar-btn navbar-right" %>
     <% else %>
       <%= link_to 'ログイン', signin_path , class:"btn btn-default navbar-btn navbar-right"%>
-      <%= link_to 'Doctor ログイン', signin_doctor_path , class:"btn btn-default navbar-btn navbar-right"%>
+      <%= link_to '医師アカウント作成', signup_doctor_path , class:"btn btn-default navbar-btn navbar-right"%>
       <%= link_to 'アカウント作成', signup_path, class:"btn btn-default navbar-btn navbar-right"%>
     <% end %>
   <% end %>
