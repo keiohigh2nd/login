@@ -1,21 +1,15 @@
 
 .main {
   float: left;
-  width: 300px;
+  width: 900px;
   margin-left: 400px;
   margin-bottom: 100px;
 } 
 
 
-.patient {
+.register {
   width: 700px;
   float: left;
-  margin-left: 20px;
-}
-
-.open_tag {
-  width: 250px;
-  float: right;
   margin-left: 20px;
 }
 

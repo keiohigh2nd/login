@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030095631) do
+ActiveRecord::Schema.define(version: 20161103003828) do
 
   create_table "alerts", force: :cascade do |t|
     t.string   "title"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20161030095631) do
     t.string   "remember_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "adress"
+    t.string   "emergence"
   end
 
 end

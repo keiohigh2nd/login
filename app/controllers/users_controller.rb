@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      redirect_to @user
+      redirect_to controller: 'users', action: 'introduction', id: @user.id
     else
       render 'new'
     end
@@ -52,11 +52,19 @@ class UsersController < ApplicationController
       redirect_to @user
   end
 
+  def introduction
+      @user = User.find(params[:id])
+      @doctors = Doctor.all
+  end
 
+  def recommendation
+      @user = User.find(params[:id])
+      @doctors = Doctor.all
+  end
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :emergence, :adress, :password, :password_confirmation)
     end
 
     def correct_user

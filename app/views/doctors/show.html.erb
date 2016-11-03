@@ -1,19 +1,23 @@
 <%= stylesheet_link_tag "doctor_home", :media => "all" %>
 
 <div class="main">
-    <h2>名前
-    <%= @doctor.name %></h2>
+    <h2>名前: <%= @doctor.name %></h2>
+    <h2>場所: <%= @doctor.adress %></h2>
+    <h2>専門: <%= @doctor.speciality %></h2>
+    
     <% if current_doctor=(@doctor) %>
       <p><%= link_to '編集', edit_doctor_path, class: "btn btn-primary btn-md" %></p>
     <% end %>
+</div>
 
+<div class="open_tag">
     <% if @doctor.openflag == 0 %>
       <%= form_tag({controller: "doctors", action: "open" }, {method: "get"}) do %>
-        <%= submit_tag("Open") %>
+        <%= submit_tag "Open", :class=> "btn btn-default" %>
       <% end %>
     <% else %>
       <%= form_tag({controller: "doctors", action: "close" }, {method: "get"}) do %>
-        <%= submit_tag("Close") %>
+        <%= submit_tag "Close" , :class=> "btn btn-success" %>
       <% end %>
     <% end %>
 </div>
@@ -29,6 +33,10 @@
 <div class="patient">
 <% if current_doctor=(@doctor) %>
   <h2>担当患者</h2>
+  <% if @doctor.users.length == 0 %>
+    現在、担当患者はおりません
+  <% end %>
+
   <% @doctor.users.each do |user| %>
     <%= link_to user.id, { :controller => :users, :action => :show, :id => user.id } %>
   <% end %>

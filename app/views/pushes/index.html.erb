@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pushes</h1>
+<h1>通知</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>When</th>
-      <th>User</th>
-      <th>Doctor</th>
+      <th>内容</th>
+      <th>日時</th>
+      <th>医師</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,16 +17,12 @@
       <tr>
         <td><%= push.title %></td>
         <td><%= push.when %></td>
-        <td><%= push.user_id %></td>
         <td><%= push.doctor_id %></td>
         <td><%= link_to 'Show', push %></td>
         <td><%= link_to 'Edit', edit_push_path(push) %></td>
-        <td><%= link_to 'Destroy', push, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '確認', push, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Push', new_push_path %>

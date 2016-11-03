@@ -28,11 +28,17 @@
   </div>
 
 <%= form_for(@user) do |f| %>
-      <%= f.label :name, '緊急連絡先'%>
-      <%= f.text_field :name ,class:"form-control",placeholder:"ご家族の携帯電話番号など" %>
+      <%= f.label :name, '名前'%>
+      <%= f.text_field :name ,class:"form-control",placeholder:"適当なIDを決めてください" %>
 
-      <%= f.label :email, '名前' %>
-      <%= f.text_field :email ,class:"form-control",placeholder:"苗字だけにしてください" %>
+      <%= f.label :email, 'メールアドレス' %>
+      <%= f.text_field :email ,class:"form-control",placeholder:"健康保険証の下5桁" %>
+
+      <%= f.label :emergence, '緊急連絡先' %>
+      <%= f.text_field :emergence ,class:"form-control",placeholder:"あなたにもしものことがあった場合の" %>
+
+      <%= f.label :adress, 'Place' %>
+      <%= f.text_field :adress ,class:"form-control",placeholder:"最寄駅やお住いの場所など" %>
 
       <%= f.label :password, 'パスワード' %>
       <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証/運転免許証の下4ケタで" %>

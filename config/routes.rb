@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :questions
     member do
       get 'favorite'
+      get 'introduction'
+      get 'recommendation'
     end
   end
 

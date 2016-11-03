@@ -1,17 +1,39 @@
 <%= stylesheet_link_tag "user_home", :media => "all" %>
 
 <div class="main">
-      <h2>緊急連絡先:
-      <%= @user.name %></h2>
-      <h2>名前:
-      <%= @user.email %></h2>
-          <% @notification = "#{@user.pushs.length}件の通知" %>
-          <% @url_push = "/users/#{@user.id}/pushes"%>
-      <%= link_to "#{@notification}", "#{@url_push}", value:1 %>
-      <%= link_to "医師検索", { :controller => :doctors, :action => :index } %>
+  <% if not @user.pushs.length == 0 %>
+    <% @notification = "#{@user.pushs.length}件の通知" %>
+    <% @url_push = "/users/#{@user.id}/pushes"%>
+  <% end %>
+  <h3>緊急連絡先: <%= @user.emergence %></h3>
+  <h3>名前: <%= @user.name %></h3>
+  <h3>希望所在地: <%= @user.name %></h3>
+  <% if current_user?(@user) %>
+    <p><%= link_to 'ユーザー情報の編集', edit_user_path, class: "btn btn-default btn-sm"%></p>
+  <% end %>
+</div>
 
+<div class="fav">
+    <%= link_to "医師検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> //
+    <%= link_to "推薦医師", { :controller => :users, :action => :recommendation, :id => @user.id }, :class=>"btn btn-success" %>
+    <% if signed_in_doctor? %>
+      <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
+        <%= check_box_tag :fav %>
+        <%= submit_tag("お気に入り") %>
+      <% end %>
 
-      
+      <h3>あなたの担当患者</h3>
+      <% @doctor.users.each do |ud| %>
+        医師ID - <%= ud.id %> / 医師名 <%= ud.name %><br>
+      <% end %>
+    <% else %>
+      <h3>あなたの担当医</h3>
+      <% @user.doctors.each do |ud| %>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-success"><%= link_to ud.name, ud %></li>
+        </ul>
+      <% end %>
+    <% end %>
 </div>
 
 <div class="ample">
@@ -41,7 +63,7 @@
        @question_id = question.id
        @url = "/users/#{question.user_id}/questions/#{question.id}/edit"%>
     </table>
-    <%= link_to '登録情報の編集',  "#{@url}" , class: "btn btn-primary btn-md" %><br>
+    <%= link_to '登録情報の編集',  "#{@url}" , class: "btn btn-default btn-sm" %><br>
   <% end %>
 
 <% if @user.questions.length == 0 %>
@@ -102,42 +124,17 @@
             <%= note.note %>
         </div>
       <% else %>
-       <div class="patient">
+          <div class="patient">
             Patient ->
             <%= note.note %>
-        </div>
+          </div>
       <% end %>
   <% end %>
   </div>
-
-  <% if current_user?(@user) %>
-    <p><%= link_to 'ユーザー情報の編集', edit_user_path, class: "btn btn-primary btn-md"%></p>
-  <% end %>
-</div>
-
-<div class="fav">
-  <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
-    <%= check_box_tag :fav %>
-    <%= submit_tag("お気に入り") %>
-  <% end %>
-
-  <% if signed_in_doctor? %> 
-    <h3>あなたの担当患者</h3>
-    <% @doctor.users.each do |ud| %>
-      医師ID - <%= ud.id %>
-      / 医師名 <%= ud.name %><br>
-    <% end %>
-  <% else %> 
-    <h3>あなたの担当医</h3>
-    <% @user.doctors.each do |ud| %>
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-success"><%= ud.id %> - <%= ud.name %></li>
-      </ul>
-    <% end %>
-  <% end %>
 </div>
 
 <div class="alert">
+<% if signed_in_doctor? %> 
   <%= form_for([@user, @user.alerts.build]) do |f| %>
   <p>
     <%= f.label :タイトル %><br>
@@ -154,15 +151,15 @@
     <% if signed_in_doctor? %>
       <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
     <% end %>
+  <%= f.submit :アラート作成 %>
+ <% end %>
+<% end %>
 
-    <%= f.submit :アラート作成 %>
-  <% end %>
-
-  <% @user.alerts.each do |ud| %>
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-success"><%= ud.id %> - <%= ud.when %> - <%= ud.doctor_id %></li>
-      </ul>
-  <% end %>
+<% @user.alerts.each do |ud| %>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-success"><%= ud.id %> - <%= ud.when %> - <%= ud.doctor_id %></li>
+  </ul>
+<% end %>
 </div>
 
 

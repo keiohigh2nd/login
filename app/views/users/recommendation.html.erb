@@ -1,0 +1,14 @@
+This is introduction
+
+推薦される医師です。
+
+<ul class="list-group">
+<% @doctors.each do |doctor| %>
+   <li class="list-group-item"><%= link_to doctor.name, doctor %>  
+    <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
+      <%= submit_tag("お気に入り") %>
+    <% end %></li>
+<% end %>
+</ul>
+
+

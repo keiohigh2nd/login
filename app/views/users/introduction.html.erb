@@ -1,0 +1,29 @@
+あなたの情報を教えてください
+<%= form_for([@user, @user.questions.build]) do |f| %>
+  <p>
+    <%= f.label :既往歴 %><br>
+    <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん" %>
+  </p>
+  <p>
+    <%= f.label :家族歴 %><br>
+    <%= f.text_area :family ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
+  </p>
+  <p>
+    <%= f.label :アレルギー %><br>
+    <%= f.text_area :alle ,class:"form-control",placeholder:"花粉、風邪薬"%>
+  </p>
+  <p>
+    <%= f.label :今飲んでるお薬 %><br>
+    <%= f.text_area :pharm ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
+  </p>
+  <p>
+    <%= f.label :生活について%><br>
+    <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
+  </p>
+  <p>
+    <%= f.submit :登録 %>
+  </p>
+<% end %>
+
+
+
