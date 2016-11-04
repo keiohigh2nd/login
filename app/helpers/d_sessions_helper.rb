@@ -27,7 +27,6 @@ def sign_in_doctor(doctor)
     doctor == current_doctor
   end
 
-
   def signed_in_doctor?
     !current_doctor.nil?
   end

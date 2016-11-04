@@ -13,30 +13,23 @@
   <% end %>
 </div>
 
-<div class="fav">
-    <%= link_to "医師検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> //
-    <%= link_to "推薦医師", { :controller => :users, :action => :recommendation, :id => @user.id }, :class=>"btn btn-success" %>
-    <% if signed_in_doctor? %>
-      <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
-        <%= check_box_tag :fav %>
-        <%= submit_tag("お気に入り") %>
-      <% end %>
 
-      <h3>あなたの担当患者</h3>
-      <% @doctor.users.each do |ud| %>
-        医師ID - <%= ud.id %> / 医師名 <%= ud.name %><br>
-      <% end %>
-    <% else %>
-      <h3>あなたの担当医</h3>
-      <% @user.doctors.each do |ud| %>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-success"><%= link_to ud.name, ud %></li>
-        </ul>
-      <% end %>
+<div class="fav">
+  <% if current_user?(@user) %>
+      <%= link_to "医師検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> //
+      <%= link_to "推薦医師", { :controller => :users, :action => :recommendation, :id => @user.id }, :class=>"btn btn-success" %> //
+      <%= link_to "整理", { :controller => :doctors, :action => :index }, :class=>"btn btn-warning" %> 
+  <% end %>
+  <h3>担当医</h3>
+    <% @user.doctors.each do |ud| %>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><%= link_to ud.name, ud %></li>
+      </ul>
     <% end %>
 </div>
 
 <div class="ample">
+  <h4> 患者基本情報</h4>
   <% @user.questions.each do |question| %>
     <table class="table table-striped table-bordered">
       <tr>
@@ -66,42 +59,40 @@
     <%= link_to '登録情報の編集',  "#{@url}" , class: "btn btn-default btn-sm" %><br>
   <% end %>
 
-<% if @user.questions.length == 0 %>
-  <%= form_for([@user, @user.questions.build]) do |f| %>
-  <p>
-    <%= f.label :既往歴 %><br>
-    <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん" %>
-  </p>
-  <p>
-    <%= f.label :家族歴 %><br>
-    <%= f.text_area :family ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
-  </p>
-  <p>
-    <%= f.label :アレルギー %><br>
-    <%= f.text_area :alle ,class:"form-control",placeholder:"花粉、風邪薬"%>
-  </p>
-  <p>
-    <%= f.label :今飲んでるお薬 %><br>
-    <%= f.text_area :pharm ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
-  </p>
-  <p>
-    <%= f.label :生活について%><br>
-    <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
-  </p>
-  <p>
-    <%= f.submit :登録 %>
-  </p>
+  <% if not signed_in_doctor? %> 
+  <% if @user.questions.length == 0 %>
+    <%= form_for([@user, @user.questions.build]) do |f| %>
+    <p>
+      <%= f.label :既往歴 %><br>
+      <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん" %>
+    </p>
+    <p>
+      <%= f.label :家族歴 %><br>
+      <%= f.text_area :family ,class:"form-control",placeholder:"父が胃がん、母が乳ガンなど"%>
+    </p>
+    <p>
+      <%= f.label :アレルギー %><br>
+      <%= f.text_area :alle ,class:"form-control",placeholder:"花粉、風邪薬"%>
+    </p>
+    <p>
+      <%= f.label :今飲んでるお薬 %><br>
+      <%= f.text_area :pharm ,class:"form-control",placeholder:"胃薬、血をサラサラにする薬など"%>
+    </p>
+    <p>
+      <%= f.label :生活について%><br>
+      <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
+    </p>
+    <p>
+      <%= f.submit :登録 %>
+    </p>
+    <% end %>
   <% end %>
-<% else %>
-    <p></p>
-<% end %>
-
+  <% end %>
 </div>
 
 <div class="notes">
   <p>
   <%= form_for([@user, @user.notes.build]) do |f| %>
-    <%= f.label :メモ %><br>
     <%= f.text_area :note ,class:"form-control",placeholder:"ご気分はどうですか" %>
 
     <% if signed_in_doctor? %>
@@ -119,14 +110,17 @@
   <% @user.notes.each do |note| %>
      <% if note.flag == 2 %>
         <div class="doctor">
-            Doctor ->
+           <p class="bg-info">
+           <span class="label label-primary">Doctor</span>
             <%= note.note %>
+           </p>
         </div>
       <% else %>
-          <div class="patient">
-            Patient ->
-            <%= note.note %>
-          </div>
+        <div class="patient">
+           <p class="bg-info">
+           <%= note.note %> 
+           </p>
+        </div>
       <% end %>
   <% end %>
   </div>
@@ -134,26 +128,24 @@
 
 <div class="alert">
 <% if signed_in_doctor? %> 
+  <h4>アラートの作成</h4>
   <%= form_for([@user, @user.alerts.build]) do |f| %>
   <p>
-    <%= f.label :タイトル %><br>
     <%= f.text_area :title ,class:"form-control", placeholder:"タイトル" %>
   </p>
   <p>
-    <%= f.label :内容 %><br>
-    <%= f.text_area :context ,class:"form-control", placeholder:"アラート作成" %>
+    <%= f.text_area :context ,class:"form-control", placeholder:"内容" %>
   </p>
   <p>
-    <%= f.label :メモ %><br>
+    <%= f.label :通知日 %><br>
     <%= f.datetime_field :when  %>
   </p>
-    <% if signed_in_doctor? %>
-      <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
-    <% end %>
-  <%= f.submit :アラート作成 %>
- <% end %>
+    <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
+    <%= f.submit :作成, class: "btn btn-default btn-sm" %>
+  <% end %>
 <% end %>
-
+</br>
+<h4>現在のアラート</h4>
 <% @user.alerts.each do |ud| %>
   <ul class="list-group">
     <li class="list-group-item list-group-item-success"><%= ud.id %> - <%= ud.when %> - <%= ud.doctor_id %></li>

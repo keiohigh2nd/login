@@ -23,21 +23,24 @@
 
 .exp {
   margin-bottom: 50px;
+  width:600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
-  font-size: 80%;
-  font-size: 1.5em;
+  font-size: 70%;
+  font-size: 1.0em;
 }
 
 .chat {
   margin-bottom: 50px;
+  width:600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
-  font-size: 80%;
-  font-size: 1.5em;
+  font-size: 70%;
+  font-size: 1.0em;
 }
 
 .sumup {
   margin-bottom: 50px;
+  width:600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
-  font-size: 80%;
-  font-size: 1.5em;
+  font-size: 70%;
+  font-size: 1.0em;
 }

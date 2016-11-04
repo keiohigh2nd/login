@@ -1,13 +1,25 @@
 <%= stylesheet_link_tag "home", :media => "all" %>
 
-<div class="exp">
-  不幸にも外出先でお一人で倒れた場合に、あなたの緊急連絡先やお体に関する情報をお預かりします。
-　その情報をもとに、医師が検索します。<br>
- <%= image_tag '/images/home_explain.png' %>
- <%= link_to 'アカウント作成', signup_path, class:"btn btn-default navbar-btn navbar-right"%>
-</div>
+<div class="main_left">
+  <div class="exp">
+   <h3>地域の医療という大きな仕事に挑戦して見ませんか？</h3>
+    病院に来る患者さんは気になる症状があるから来院します。しかし「腰が少し痛い」という程度では来ない患者も多いです。</br>
+このように貴院の周りでは来院していない患者もいます。そういう方々を含めて地域の医療に貢献していただけませんか。</br>
+  </div>
+  <div class="chat">
+    <h3>フォローアップを追うことができます</h3></br>一度治療をされたり薬を出しても、患者さんがその結果、どうなったかとい
+うのはわかりません。良くなったから来ないのか、症状が以前として悪いから来ないのか。</br>「1週間後に、患者の症状を訪ねる」
+というアラートを設定することで、そのような気になる患者を、自動でフォローアップできます。</br> その結果、患者を定着させる
+ことができます。
+  </div>
+  <div class="sumup">
+    <h3>整理された患者様の情報を家族や他職種と連携して共有できます</h3></br>患者さんの情報を見ることができるのは、病院の
+パソコンからだけで良いのでしょうか。患者様の情報は、患者様のものであり、患者様が共有したいと思う相手に共有すべきです。
+  </div>
 
-<div class="login">
+</div>
+<div class="main_right">
+  <div class="login">
   <div class="alert alert-success" role="alert">
   ユーザーログイン
   </div>
@@ -18,7 +30,7 @@
   <% end %>
 </div>
 
-<div class="d_login">
+  <div class="d_login">
   <div class="alert alert-info" role="alert">
   医師ログイン
   </div>
@@ -26,5 +38,6 @@
     <%= f.text_field :email ,class:"form-control",placeholder:"メールアドレス" %>
     <%= f.password_field :password ,class:"form-control",placeholder:"メールアドレス" %>
     <%= f.submit 'ログインする' %>
-<% end %>
-
+  <% end %>
+  </div>
+</div>

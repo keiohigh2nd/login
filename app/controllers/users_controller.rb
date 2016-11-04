@@ -69,8 +69,16 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      @doctor = current_doctor
-      redirect_to root_url unless current_user?(@user) or current_doctor?(@doctor)
+      @doctors = @user.doctors
+      if signed_in_doctor?
+        @doctor = current_doctor
+        if not @doctors.exists?(:id => @doctor.id)
+          redirect_to root_url unless current_user?(@user) or signed_in_doctor 
+        end
+      else
+        redirect_to root_url unless current_user?(@user)
+      end
+                                           
       #This part decides who to watch the show page
       #redirect_to root_url unless current_user?(@user) or current_doctor?(@doctor)
     end

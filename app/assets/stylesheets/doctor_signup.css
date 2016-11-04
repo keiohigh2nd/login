@@ -2,9 +2,34 @@
 .main {
   float: left;
   width: 900px;
-  margin-left: 400px;
-  margin-bottom: 100px;
+  margin-left: 30px;
+  margin-bottom: 50px;
 } 
+
+.exp {
+  margin-bottom: 50px;
+  width:600px;
+  font-family: "ＭＳ Ｐゴシック",sans-serif;
+  font-size: 70%;
+  font-size: 1.0em;
+}
+
+.chat {
+  margin-bottom: 50px;
+  width:600px;
+  font-family: "ＭＳ Ｐゴシック",sans-serif;
+  font-size: 70%;
+  font-size: 1.0em;
+}
+
+.sumup {
+  margin-bottom: 50px;
+  width:600px;
+  font-family: "ＭＳ Ｐゴシック",sans-serif;
+  font-size: 70%;
+  font-size: 1.0em;
+}
+
 
 
 .register {

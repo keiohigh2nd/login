@@ -9,22 +9,15 @@
 
 .ample {
   float: left;
-  width: 350px;
-  margin-left: 20px;
+  width: 450px;
+  margin-left: 50px;
 }
 
 .notes {
   float: right;
   width: 450px;
-  margin-top: 50px;
-  margin-left: 20px;
-}
-
-.f_button {
-  float: right;
-  width: 450px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-right: 20px;
 }
 
 .fav {
@@ -34,31 +27,39 @@
 }
 
 .alert {
-  width: 400px;
+  width: 450px;
   float: left;
+  margin-left: 30px;
 }
 
 .talk {
   width: 400px;
   height: 400px;
-  border:#ff0000 solid 1px;
   margin-bottom: 20px;
+  margin-top: 50px;
 
 }
+.f_button {
+  float: right;
+  width: 50px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 .doctor {
   float: left;
-  width: 300px;
+  width: 350px;
   margin-right: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  text-align: left;
+  margin-top: 10px;
 }
 
 .patient {
   float: right;
-  width: 300px;
+  width: 350px;
   margin-left: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
+  text-align: right;
   background-color:#F9F9F9;
 }
 
