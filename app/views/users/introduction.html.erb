@@ -1,8 +1,17 @@
-あなたの情報を教えてください
+<style type="text/css">
+    .form {
+        width:800px;
+        float: left;
+        margin-left: 30px;
+    }
+</style>
+
+<div class="form">
+<h3>あなたについて、簡単に教えてください</h3>
 <%= form_for([@user, @user.questions.build]) do |f| %>
   <p>
     <%= f.label :既往歴 %><br>
-    <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん" %>
+    <%= f.text_area :past ,class:"form-control",placeholder:"結核,胃がん。なければ無しと書いてください。" %>
   </p>
   <p>
     <%= f.label :家族歴 %><br>
@@ -21,9 +30,9 @@
     <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
   </p>
   <p>
-    <%= f.submit :登録 %>
+    <%= f.submit :登録, class: "btn btn-default btn-md" %>
   </p>
 <% end %>
-
+</div>
 
 

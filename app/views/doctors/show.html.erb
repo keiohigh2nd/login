@@ -4,7 +4,7 @@
     <h2>名前: <%= @doctor.name %></h2>
     <h2>場所: <%= @doctor.adress %></h2>
     <h2>専門: <%= @doctor.speciality %></h2>
-    
+    <h2>過去に受け持った患者数: <%= @doctor.users.length %></h2> 
     <% if signed_in_doctor? %>
       <% if current_doctor=(@doctor) %>
       <p><%= link_to '編集', edit_doctor_path, class: "btn btn-primary btn-md" %></p>
@@ -14,7 +14,7 @@
 
 <% if not signed_in_doctor? %>
   <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
-    <%= submit_tag "お気に入り", :class=> "btn btn-primary" %>
+    <%= submit_tag "お気に入りに登録する", :class=> "btn btn-primary" %>
   <% end %>
 <% end %>
 

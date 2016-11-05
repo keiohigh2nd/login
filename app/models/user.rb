@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save { email.downcase! }
 
   validates :agreement, :acceptance =>true
-  validates :email, presence: true
+  #validates :email, presence: true
   validates :name, presence: true
   validates :password, presence: true, length: { is: 4 }
 
@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :doctors, through: :favorites
 
+  has_one :summary, dependent: :destroy
+ 
   def check_agreement
     if agreement.present?
       errors.add(:agreement, "can't be in the past")

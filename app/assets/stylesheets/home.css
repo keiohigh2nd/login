@@ -2,6 +2,7 @@
   float: left;
   width: 600px;
   margin-bottom: 50px;
+  margin-left: 30px;
 }
 
 .main_right {
@@ -35,8 +36,6 @@
   font-size: 70%;
   font-size: 1.0em;
 }
-
-
 
 .login {
   float: right;

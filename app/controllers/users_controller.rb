@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :delete]
   before_action :correct_user, only: [:edit, :update, :show]
   #before_action :correct_doctor, only: [:edit, :update, :show]
-  before_action :detect_devise_variant
+  #before_action :detect_devise_variant
 
   def index
-    @users = User.all
+    #@users = User.all
   end
 
   def show
@@ -61,6 +61,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @doctors = Doctor.all
   end
+
+  def summary
+      @user = User.find(params[:id])
+      sum = Summary.new()
+      @user.summary = sum
+  end    
   private
 
     def user_params

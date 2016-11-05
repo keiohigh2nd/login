@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     resources :pushes
     resources :notes
     resources :questions
+    resources :summaries
     member do
       get 'favorite'
       get 'introduction'
+      get 'summaries'
       get 'recommendation'
     end
   end

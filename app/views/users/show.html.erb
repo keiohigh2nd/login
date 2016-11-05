@@ -18,7 +18,8 @@
   <% if current_user?(@user) %>
       <%= link_to "医師検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> //
       <%= link_to "推薦医師", { :controller => :users, :action => :recommendation, :id => @user.id }, :class=>"btn btn-success" %> //
-      <%= link_to "整理", { :controller => :doctors, :action => :index }, :class=>"btn btn-warning" %> 
+      <% @url_sum = "/users/#{@user.id}/summaries"%>
+      <%= link_to "整理", "#{@url_sum}", :class=>"btn btn-warning" %> 
   <% end %>
   <h3>担当医</h3>
     <% @user.doctors.each do |ud| %>
@@ -83,7 +84,7 @@
       <%= f.text_area :life ,class:"form-control",placeholder:"喫煙10本/日,ビール1缶/日、一人暮らしなど" %>
     </p>
     <p>
-      <%= f.submit :登録 %>
+      <%= f.submit :登録, class: "btn btn-default btn-md"  %>
     </p>
     <% end %>
   <% end %>
@@ -101,7 +102,7 @@
        <%= f.hidden_field :flag, :value => 1 %>
     <% end %>
     <div class="f_button">
-      <%= f.submit :書く %>
+      <%= f.submit :書く, class: "btn btn-default btn-md"  %>
     </div>
   <% end %>
   </p>

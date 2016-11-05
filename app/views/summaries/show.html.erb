@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sum:</strong>
+  <%= @summary.sum %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @summary.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_summary_path(@summary) %> |
+<%= link_to 'Back', summaries_path %>

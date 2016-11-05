@@ -1,11 +1,21 @@
-<h1>医師一覧</h1>
+<style type="text/css">
+    .form {
+        width:800px;
+        float: left;
+        margin-left: 30px;
+    }
+</style>
 
+<div class="form">
+<h3>医師一覧</h3>
 <%= form_tag doctors_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
   <p>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag :Search, :name => nil, class: "btn btn-default btn-md" %>
   </p>
 <% end %>
+
+<span class="badge">Open</span>は受け入れ可能ということです</br>
 
 <ul class="list-group">
   <% @doctors.each do |doctor| %>
@@ -16,3 +26,5 @@
   </li>
   <% end %>
 </ul>
+
+</div>
