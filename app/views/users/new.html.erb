@@ -61,7 +61,7 @@
   この規約に同意する場合は、チェックを入れてください <br>
   <%= f.check_box :agreement %>　同意します
   </div>
-  <%= f.submit 'アカウントを作成する' %>
+  <%= f.submit 'アカウントを作成する', class: "btn btn-default btn-md" %>
      <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>

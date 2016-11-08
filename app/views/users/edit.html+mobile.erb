@@ -1,26 +1,41 @@
-<h1>アカウント編集</h1>
+<style type="text/css">
+    .form {
+        width:800px;
+        float: left;
+        margin-left: 30px;
+    }
+</style>
 
+<div class="form">
+<h3>アカウント編集</h3>
 <%= form_for(@user) do |f| %>
-
-  <table border="1">
+  <table border="1" class="table table-bordered">
     <tr>
       <th><%= f.label :name, '名前' %></th>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name,class:"form-control" %></td>
     </tr>
     <tr>
       <th><%= f.label :email, 'メールアドレス' %></th>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :email,class:"form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :adress, '住所、所在地' %></th>
+      <td><%= f.text_field :adress,class:"form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :emergence, '緊急連絡先' %></th>
+      <td><%= f.text_field :emergence,class:"form-control" %></td>
     </tr>
     <tr>
       <th><%= f.label :password, 'パスワード' %></th>
-      <td><%= f.password_field :password %></td>
+      <td><%= f.password_field :password,class:"form-control" %></td>
     </tr>
     <tr>
       <th><%= f.label :password_confirmation, '確認' %></th>
-      <td><%= f.password_field :password_confirmation %></td>
+      <td><%= f.password_field :password_confirmation,class:"form-control" %></td>
     </tr>
   </table>
 
-  <%= f.submit 'アカウントを編集する' %>
-
+  <%= f.submit :アカウントを編集する, class: "btn btn-default btn-md"%>
 <% end %>
+</div>

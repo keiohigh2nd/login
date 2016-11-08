@@ -1,34 +1,67 @@
-<h1>アカウント作成</h1>
+<%= stylesheet_link_tag "user_new", :media => "all" %>
 
-このデータベースは、治療の最初のステップで気をつけるために情報をお預かりするウェブサイトです。
-あなたが不幸にも事故にあった場合や、ご家族が外出先で事故にあった場合、困る。
-そのために名前（名字だけ）と健康保険証の下4けたを入れておきましょう。
+<style type="text/css">
+    .box_srcollbar {
+        overflow:auto;
+        width:600px;
+        height:100px;
+        padding:5px;
+        border:1px solid #cccccc;
+        background-color:#F9F9F9;
+        color:#000;
+        font-size:12px;
+    }
+</style>
 
+
+<div class="main">
+  <div class="exp">
+    <h3>かかりつけ医はいますか？</h3>
+    自分の健康を専属で見てくれる医師がいますか？
+</br>私たちのサービスはかかりつけ医をあなたの症状や勤務地、住居地から推薦します。</br>
+かかりつけ医がいると、自身の病歴や体質・生活習慣などを踏まえた診察を受けられます。</br>
+またあなたの病気だけではなく、仕事や家族のことを理解して治療してくれるお医者さんがかかりつけ医です。</br>
+更に必要に応じて適切な専門医や病院を紹介してもらえます。</br>
+  </div>
+  <div class="chat">
+    <h3>気になる症状をどうしてますか</h3></br>
+かかりつけ医を見つけたら、チャットによる相談ができます。「病院に行くほどではないが、気になる症状」がある時なども、聞くことができます。
+  </div>
+  <div class="sumup">
+    <h3>医療情報を簡単にまとめます</h3></br>
+あなたの医療情報を医師とのチャットも含めて全て綺麗にまとめます。その情報を用いて、別の病院や医師に簡単に自分のことを見せられます。</br>またもしあなたが交通事故などで意識を失った場合、搬送先の医師があなたの健康保険証or運転免許証の5桁でアクセスできるようになります。
+  </div>
 
 
 <%= form_for(@user) do |f| %>
+      <%= f.label :name, 'お名前'%>
+      <%= f.text_field :name ,class:"form-control",placeholder:"苗字だけでも可" %>
 
-  <table border="1">
-    <tr>
-      <th><%= f.label :name, '緊急連絡先' %></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :email, '名前(苗字だけにしてください)' %></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password, 'パスワード(4けた)' %></th>
-      <td><%= f.password_field :password %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password_confirmation, '確認' %></th>
-      <td><%= f.password_field :password_confirmation %></td>
-    </tr>
-  </table>
-  <%= f.check_box :agreement %>
+      <%= f.label :email, 'メールアドレス' %>
+      <%= f.text_field :email ,class:"form-control",placeholder:"運営からのサービスに関する連絡のみでしか使用しません" %>
 
-  <%= f.submit 'アカウントを作成する' %>
+      <%= f.label :emergence, '緊急連絡先' %>
+      <%= f.text_field :emergence ,class:"form-control",placeholder:"母や息子などの電話番号" %>
+
+      <%= f.label :adress, '希望する地域や場所' %>
+      <%= f.text_field :adress ,class:"form-control",placeholder:"最寄駅やお住いの場所など" %>
+
+      <%= f.label :password, 'パスワード' %>
+      <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証や運転免許証の下5ケタで" %>
+
+      <%= f.label :password_confirmation, '確認' %>
+      <%= f.password_field :password_confirmation ,class:"form-control",placeholder:"もう一度パスワードの確認" %>
+
+  <div class="box_srcollbar">
+    このサービスでは一切お金はかかりません。また緊急時に閲覧するのは医師のみです。このサービスでは、医師に対して医学・医療の質問ができるサービスであり、診療行為またはこれに準ずる行為を目的として利用することはできません。医師による回答は治療行為ではありません。お客様はこのことを十分認識したうえで自己の責任においてサービスを利用し、必要ならば適切な医療機関の受診等、自身の判断で行ってください。実際に医療機関を受診する際も、治療方法、薬の内容等、担当の医師によく相談、確認するようにお願い致します。医師による回答により何らかの不都合、不利益が発生し、また、損害を被った場合でも、当社はそれに対し一切の責任を負いませんので予めご了承ください。
+  </div>
+
+
+  <div class="well">
+  この規約に同意する場合は、チェックを入れてください <br>
+  <%= f.check_box :agreement %>　同意します
+  </div>
+  <%= f.submit 'アカウントを作成する', class: "btn btn-default btn-md" %>
      <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -37,3 +70,4 @@
 
 <% end %>
 
+</div>

@@ -23,7 +23,7 @@
   ユーザーログイン
   </div>
   <%= form_for(:session, url: sessions_path) do |f| %>
-      <%= f.text_field :email ,class:"form-control",placeholder:"名前"%><br>
+      <%= f.text_field :name ,class:"form-control",placeholder:"名前"%><br>
       <%= f.password_field :password,class:"form-control",placeholder:"5ケタ番号" %><br>
     <%= f.submit :ログインする, :class=> "btn btn-default"  %>
   <% end %>
@@ -35,7 +35,7 @@
   </div>
   <%= form_for(:dsession, url: d_sessions_path) do |f| %>
     <%= f.text_field :email ,class:"form-control",placeholder:"メールアドレス" %>
-    <%= f.password_field :password ,class:"form-control",placeholder:"メールアドレス" %><br>
+    <%= f.password_field :password ,class:"form-control",placeholder:"パスワード" %><br>
     <%= f.submit :ログインする, :class=> "btn btn-default"  %>
   <% end %>
   </div>
