@@ -9,7 +9,7 @@
 
 .ample {
   float: left;
-  width: 370px;
+  width: 400px;
   margin-left: 20px;
 }
 
@@ -29,7 +29,7 @@
 .alert {
   width: 350px;
   float: left;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .talk {
@@ -60,5 +60,6 @@
   margin-left: 20px;
   margin-top: 10px;
   text-align: right;
+  background-color:#F9F9F9;
 }
 

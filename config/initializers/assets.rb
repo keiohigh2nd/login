@@ -9,6 +9,8 @@ Rails.application.config.assets.precompile += %w( home.css )
 Rails.application.config.assets.precompile += %w( article_show.css ) 
 Rails.application.config.assets.precompile += %w( doctor_home.css )
 Rails.application.config.assets.precompile += %w( doctor_signup.css )
+Rails.application.config.assets.precompile += %w( user_index.css )
+Rails.application.config.assets.precompile += %w( user_home_mobile.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

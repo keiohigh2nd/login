@@ -1,19 +1,19 @@
 .main_left {
   float: left;
-  width: 400px;
+  width: 600px;
   margin-bottom: 50px;
   margin-left: 30px;
 }
 
 .main_right {
   float: right;
-  width: 200px;
+  width: 300px;
   margin-bottom: 50px;
 }
 .exp {
   margin-bottom: 50px;
   float: left;
-  width: 450px;
+  width: 600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
   font-size: 70%;
   font-size: 1.0em;
@@ -22,7 +22,7 @@
 .chat {
   margin-bottom: 50px;
   float: left;
-  width: 450px;
+  width: 600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
   font-size: 70%;
   font-size: 1.0em;
@@ -31,7 +31,7 @@
 .sumup {
   margin-bottom: 50px;
   float: left;
-  width: 450px;
+  width: 600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
   font-size: 70%;
   font-size: 1.0em;

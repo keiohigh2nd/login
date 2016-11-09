@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   #before_action :detect_devise_variant
 
   def index
-    #@users = User.all
+      @users = current_doctor.users
+      @users = @users.search(params[:search])
+      @value1 = 3
+      @value2 = 6
+      @value3 = 9
   end
 
   def show
@@ -63,9 +67,8 @@ class UsersController < ApplicationController
   end
 
   def summary
-      @user = User.find(params[:id])
-      sum = Summary.new()
-      @user.summary = sum
+      @user = User.find(params[:user_id])
+      @text = "-------"
   end    
   private
 

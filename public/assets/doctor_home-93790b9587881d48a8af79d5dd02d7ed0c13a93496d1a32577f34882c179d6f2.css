@@ -1,15 +1,11 @@
 
 .main {
   float: left;
-  width: 300px;
-  margin-left: 20px;
+  width: 400px;
+  margin-left: 50px;
   margin-bottom: 40px;
 } 
 
-.function {
-  width: 250px;
-  float: right;
-}
 
 .patient {
   width: 700px;
@@ -18,7 +14,7 @@
 }
 
 .open_tag {
-  width: 300px;
+  width: 450px;
   float: right;
   margin-left: 20px;
 }

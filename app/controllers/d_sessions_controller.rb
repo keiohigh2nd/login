@@ -1,5 +1,9 @@
 class DSessionsController < ApplicationController
   def new
+    if signed_in_doctor?
+      doctor = current_doctor
+      redirect_to doctor
+    end
   end
 
   def create

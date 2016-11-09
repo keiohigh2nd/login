@@ -9,12 +9,12 @@
 
 .ample {
   float: left;
-  width: 370px;
+  width: 400px;
   margin-left: 20px;
 }
 
 .notes {
-  float: right;
+  float: left;
   width: 350px;
   margin-top: 30px;
   margin-right: 20px;
@@ -22,19 +22,20 @@
 
 .fav {
   width: 350px;
-  float: right;
+  float: left;
   margin-right: 20px;
 }
 
 .alert {
   width: 350px;
   float: left;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .talk {
   width: 300px;
   height: 300px;
+  float: left;
   margin-bottom: 20px;
   margin-top: 50px;
 
@@ -60,5 +61,6 @@
   margin-left: 20px;
   margin-top: 10px;
   text-align: right;
+  background-color:#F9F9F9;
 }
 

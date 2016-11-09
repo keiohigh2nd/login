@@ -1,19 +1,14 @@
-.main_left {
-  float: left;
-  width: 400px;
-  margin-bottom: 50px;
-  margin-left: 30px;
-}
 
-.main_right {
-  float: right;
-  width: 200px;
+.main {
+  float: left;
+  width: 900px;
+  margin-left: 30px;
   margin-bottom: 50px;
-}
+} 
+
 .exp {
   margin-bottom: 50px;
-  float: left;
-  width: 450px;
+  width:600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
   font-size: 70%;
   font-size: 1.0em;
@@ -21,8 +16,7 @@
 
 .chat {
   margin-bottom: 50px;
-  float: left;
-  width: 450px;
+  width:600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
   font-size: 70%;
   font-size: 1.0em;
@@ -30,23 +24,24 @@
 
 .sumup {
   margin-bottom: 50px;
-  float: left;
-  width: 450px;
+  width:600px;
   font-family: "ＭＳ Ｐゴシック",sans-serif;
   font-size: 70%;
   font-size: 1.0em;
 }
 
-.login {
-  float: right;
-  width: 200px;
-  margin-left: 10px;
-  margin-bottom: 30px;
+
+
+.register {
+  width: 700px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
-.d_login {
-  float: right;
-  width: 200px;
+.f_button {
+  width: 100px;
+  float: left;
   margin-left: 10px;
+  margin-top: 20px;
 }
-

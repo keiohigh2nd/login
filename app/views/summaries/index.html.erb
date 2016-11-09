@@ -1,5 +1,8 @@
 <h1>あなたの医療情報のまとめ</h1>
-
-<div class="exp">
-
-</div>
+ <% @user = User.find(params[:user_id]) 
+    @text = ""
+    for un in @user.notes
+      @text += un.note  
+    end %>
+ <%= @user.name %>
+ <%= @text %>

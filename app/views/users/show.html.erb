@@ -19,7 +19,7 @@
       <%= link_to "医師検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> //
       <%= link_to "推薦医師", { :controller => :users, :action => :recommendation, :id => @user.id }, :class=>"btn btn-success" %> //
       <% @url_sum = "/users/#{@user.id}/summaries"%>
-      <%= link_to "整理", "#{@url_sum}", :class=>"btn btn-warning" %> 
+      <%= link_to "まとめ", "#{@url_sum}", :class=>"btn btn-warning" %> 
   <% end %>
   <h3>担当医</h3>
     <% @user.doctors.each do |ud| %>
@@ -146,11 +146,22 @@
   <% end %>
 <% end %>
 </br>
+
 <h4>現在のアラート</h4>
 <% @user.alerts.each do |ud| %>
-  <ul class="list-group">
-    <li class="list-group-item list-group-item-success"><%= ud.id %> - <%= ud.when %> - <%= ud.doctor_id %></li>
-  </ul>
+ <ul class="list-group">
+  <li class="list-group-item list-group-item-success">
+    <% if ud.doctor_id %>
+      <% @doc = Doctor.find(ud.doctor_id) %>
+      <%= ud.when.strftime("%Y年%m月%d日 %H時%M分") %>まで from <%= @doc.name %>
+    <% else %>
+      <%= ud.when %> まで
+    <% end %>
+      </br>
+      <%= ud.title %></br>
+      <%= ud.context %>
+  </li>
+ </ul>
 <% end %>
 </div>
 

@@ -3,14 +3,14 @@
   <table border="1">
     <tr>
       <th><%= f.label :email, 'メールアドレス' %></th>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :email,class:"form-control",placeholder:"メールアドレス" %></td>
     </tr>
     <tr>
       <th><%= f.label :password, 'パスワード' %></th>
-      <td><%= f.password_field :password %></td>
+      <td><%= f.password_field :password,class:"form-control",placeholder:"パスワード" %></td>
     </tr>
   </table>
 
-  <%= f.submit 'ログインする' %>
+  <%= f.submit :ログインする, :class=> "btn btn-default"  %>
 
 <% end %>

@@ -1,16 +1,17 @@
 <%= stylesheet_link_tag "doctor_home", :media => "all" %>
 
 <div class="main">
-    <h2>名前: <%= @doctor.name %></h2>
-    <h2>場所: <%= @doctor.adress %></h2>
-    <h2>専門: <%= @doctor.speciality %></h2>
-    <h2>過去に受け持った患者数: <%= @doctor.users.length %></h2> 
+    <h3>名前: <%= @doctor.name %></h3>
+    <h3>場所: <%= @doctor.adress %></h3>
+    <h3>専門: <%= @doctor.speciality %></h3>
+    <h3>過去に受け持った患者数: <%= @doctor.users.length %></h3> 
     <% if signed_in_doctor? %>
-      <% if current_doctor=(@doctor) %>
+      <% if @doctor==current_doctor %>
       <p><%= link_to '編集', edit_doctor_path, class: "btn btn-primary btn-md" %></p>
       <% end %>
     <% end %>
 </div>
+
 
 <% if not signed_in_doctor? %>
   <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
@@ -18,25 +19,25 @@
   <% end %>
 <% end %>
 
-<% if signed_in_doctor? %>
+<% if @doctor==current_doctor %>
   <div class="open_tag">
+    <%= link_to "患者情報", { :controller => :users, :action => :index }, :class=>"btn btn-info" %> //
     <% if @doctor.openflag == 0 %>
       <h4>あなたは現在、患者を受け入れていません</h4>
       <%= form_tag({controller: "doctors", action: "open" }, {method: "get"}) do %>
         <div class="f_button">
-        <%= submit_tag "Open", :class=> "btn btn-default" %>
+          <%= submit_tag "Open", :class=> "btn btn-default" %>
         </div>
       <% end %>
     <% else %>
 　　　<h4>現在、患者を受け入れています</h4>
       <%= form_tag({controller: "doctors", action: "close" }, {method: "get"}) do %>
         <div class="f_button">
-        <%= submit_tag "Close" , :class=> "btn btn-success" %>
+          <%= submit_tag "Close" , :class=> "btn btn-success" %>
         </div>
       <% end %>
     <% end %>
   </div>
-
 
 
   <div class="patient">
