@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :doctors, through: :favorites
 
   has_one :summary, dependent: :destroy
+  has_many :screenings, dependent: :destroy
  
   def check_agreement
     if agreement.present?

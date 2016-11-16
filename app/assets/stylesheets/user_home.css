@@ -26,6 +26,12 @@
   margin-right: 20px;
 }
 
+.bar {
+  width: 800px;
+  float: right;
+}
+
+
 .alert {
   width: 350px;
   float: left;
@@ -34,20 +40,18 @@
 
 .talk {
   width: 300px;
-  height: 300px;
   margin-bottom: 20px;
   margin-top: 50px;
 
 }
 .f_button {
-  float: right;
+  float: left;
   width: 50px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
 .doctor {
-  float: left;
   width: 250px;
   margin-right: 20px;
   text-align: left;
@@ -55,7 +59,6 @@
 }
 
 .patient {
-  float: right;
   width: 250px;
   margin-left: 20px;
   margin-top: 10px;

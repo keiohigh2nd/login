@@ -1,0 +1,7 @@
+<h4>うつ病のスクリーニング検診です</h4>
+<%= form_tag({controller: "users", action: "collect_screen" }, {method: "get"}) do %>
+  <%= hidden_field_tag :title, "胃がん" %>
+  <%= check_box :check, :value => 1 %>
+  <%= submit_tag "作成" %> 
+<% end %>
+

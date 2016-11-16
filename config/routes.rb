@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :screen_types
   resources :pushes
   resources :alerts
   resources :articles
@@ -9,11 +10,13 @@ Rails.application.routes.draw do
     resources :notes
     resources :questions
     resources :summaries
+    resources :screenings
     member do
       get 'favorite'
       get 'introduction'
       get 'summaries'
       get 'recommendation'
+      get 'collect_screen'
     end
   end
 

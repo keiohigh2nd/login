@@ -70,6 +70,13 @@ class UsersController < ApplicationController
       @user = User.find(params[:user_id])
       @text = "-------"
   end    
+
+  def collect_screen
+     screen = current_user.screenings.build(title: params[:title], score: params[:check])
+     screen.save
+     redirect_to current_user
+  end
+ 
   private
 
     def user_params

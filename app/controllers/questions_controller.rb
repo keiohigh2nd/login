@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @user = User.find(params[:user_id])
+    #@user = User.find(params[:user_id])
     #@questions = Question.all
   end
 

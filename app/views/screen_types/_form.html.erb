@@ -1,0 +1,27 @@
+<%= form_for(screen_type) do |f| %>
+  <% if screen_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(screen_type.errors.count, "error") %> prohibited this screen_type from being saved:</h2>
+
+      <ul>
+      <% screen_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_area :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :doctor_id %>
+    <%= f.text_field :doctor_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

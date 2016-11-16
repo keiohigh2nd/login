@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>QMshare</title>
+  <title>Qarte</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <nav class="navbar navbar-default">
-  <a class="navbar-brand" href="/signin">QMShare</a>
+  <a class="navbar-brand" href="/signin">Qarte</a>
   <% if signed_in_doctor? %>
     <%= link_to 'Doctor Logout', signout_doctor_path, method: :delete, class:"btn btn-default navbar-btn navbar-right" %>
     <%= link_to "Doctor Home", { :controller => :doctors, :action => :show, :id => current_doctor.id }, class:"btn btn-default navbar-btn navbar-right" %>

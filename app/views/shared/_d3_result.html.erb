@@ -1,0 +1,55 @@
+    <%= stylesheet_link_tag "nv.d3", :media => "all" %>
+    <%= javascript_include_tag "d3.v3.min", :media => "all" %>
+    <%= javascript_include_tag "nd.d3", :media => "all" %>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+        svg {
+            display: block;
+        }
+        #chart1, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chart1" class="chart">
+    <svg></svg>
+</div>
+
+<script>
+
+var chart;
+nv.addGraph(function() {
+
+    chart = nv.models.parallelCoordinates()
+        .dimensionNames(["Age", "Time", "BP", "WBC", "CRP", "HR", "BS"])
+        .dimensionFormats([d3.format(""), d3.format(""), d3.format("g"), d3.format("d"), d3.format(""), d3.format(""), d3.format("")])
+        .lineTension(0.85);
+		
+
+    d3.select('#chart1 svg')
+            .datum(data())
+            .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+});
+
+function data() {
+return [ { "name": 0,"CRP": 4, "HR": 47, "Age":61,"BP": 76,"WBC": 7647,"Time": 0,"BS": 76 }, { "name": 1,"CRP": 9, "HR": 52, "Age":57,"BP": 101,"WBC": 9694,"Time": 0,"BS": 114 }, { "name": 2,"CRP": 3, "HR": 47, "Age":42,"BP": 99,"WBC": 8974,"Time": 0,"BS": 99 }, { "name": 3,"CRP": 2, "HR": 46, "Age":37,"BP": 120,"WBC": 7389,"Time": 0,"BS": 93 }, { "name": 4,"CRP": 6, "HR": 93, "Age":43,"BP": 96,"WBC": 6390,"Time": 0,"BS": 64 }, { "name": 5,"CRP": 9, "HR": 71, "Age":77,"BP": 89,"WBC": 5531,"Time": 0,"BS": 107 }, { "name": 6,"CRP": 3, "HR": 57, "Age":22,"BP": 110,"WBC": 4411,"Time": 0,"BS": 105 }, { "name": 7,"CRP": 2, "HR": 56, "Age":57,"BP": 141,"WBC": 6759,"Time": 0,"BS": 94 }, { "name": 8,"CRP": 9, "HR": 62, "Age":40,"BP": 105,"WBC": 6071,"Time": 0,"BS": 97 }, { "name": 9,"CRP": 2, "HR": 73, "Age":44,"BP": 101,"WBC": 8065,"Time": 0,"BS": 84 }];}
+
+</script>
+</body>

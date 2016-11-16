@@ -46,9 +46,12 @@
     <% if @doctor.users.length == 0 %>
       現在、担当患者はおりません
     <% end %>
+    <ul class="list-group">
     <% @doctor.users.each do |user| %>
-      <%= link_to user.id, { :controller => :users, :action => :show, :id => user.id } %>
+      <li class="list-group-item"><%= link_to user.id, { :controller => :users, :action => :show, :id => user.id } %></li>
     <% end %>
+    </ul>
   <% end %>
   </div>
+
 <% end %>

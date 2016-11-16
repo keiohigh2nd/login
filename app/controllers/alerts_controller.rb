@@ -64,7 +64,7 @@ class AlertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alert_params
-      params.require(:alert).permit(:title, :context, :when, :user_id, :doctor_id)
+      params.require(:alert).permit(:title, :context, :when, :user_id, :doctor_id, :screen_id)
     end
 
     def push_params

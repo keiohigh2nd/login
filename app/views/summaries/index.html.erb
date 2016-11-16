@@ -1,8 +1,12 @@
 <h1>あなたの医療情報のまとめ</h1>
- <% @user = User.find(params[:user_id]) 
-    @text = ""
-    for un in @user.notes
-      @text += un.note  
-    end %>
- <%= @user.name %>
- <%= @text %>
+ <% @user = User.find(params[:user_id]) %>
+ <ul class="list-group">
+   <% for un in @user.notes %>
+     <% require 'if_medic'
+        tmp = medic?(un.note)
+     %>
+     <% if tmp == 1 %>
+       <li class="list-group-item"> <span class="badge"><%= un.created_at.strftime("%Y年%m月%d日") %></span> <%= un.note %> </li>
+     <%  end %>
+   <%  end %>
+ </ul>

@@ -1,0 +1,1 @@
+json.array! @screen_types, partial: 'screen_types/screen_type', as: :screen_type

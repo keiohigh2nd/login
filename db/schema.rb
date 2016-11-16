@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104044724) do
+ActiveRecord::Schema.define(version: 20161113015448) do
 
   create_table "alerts", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161104044724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "doctor_id"
+    t.integer  "screen_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -78,6 +79,29 @@ ActiveRecord::Schema.define(version: 20161104044724) do
     t.text     "pharm"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "scree_types", force: :cascade do |t|
+    t.text     "title"
+    t.string   "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "screen_types", force: :cascade do |t|
+    t.text     "title"
+    t.string   "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "screenings", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "user_id"
+    t.date     "check_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "score"
   end
 
   create_table "summaries", force: :cascade do |t|
