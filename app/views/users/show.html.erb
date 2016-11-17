@@ -24,7 +24,7 @@
       <%= link_to "検査一覧", "#{@url_screen}", :class=>"btn btn-primary" %> 
   <% end %>
   <% if signed_in_doctor? %>
-      <%= link_to "類似患者の検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> 
+      <%= link_to "類似患者の検索", { :controller => :doctors, :action => :find_similar }, :class=>"btn btn-info" %> 
   <% end %>
   <h3>担当医</h3>
     <% @user.doctors.each do |ud| %>
@@ -105,6 +105,10 @@
 
     <% if signed_in_doctor? %>
        <%= f.hidden_field :flag, :value => 2 %>
+       <div class="f_check">
+         もし患者に非表示にするには、</br>チェックを入れてください
+         <%= f.check_box :flag, { :checked=>false }, 4, 2 %>
+       </div>
     <% else %>
        <%= f.hidden_field :flag, :value => 1 %>
     <% end %>
@@ -126,10 +130,19 @@
       <% elsif note.flag == 3 then %>
         <div class="doctor">
            <p class="bg-info">
-           <span class="label label-danger">XYZ</span>
+           <span class="label label-danger">Doctor Q</span>
             <%= note.note %>
            </p>
         </div>
+      <% elsif note.flag == 4 then %>
+         <% if signed_in_doctor? %>
+         <div class="doctor">
+           <p class="bg-info">
+           <span class="label label-primary">Doctor Q</span>
+            <%= note.note %>
+           </p>
+         </div>
+         <% end %>
       <% else %>
         <div class="patient">
            <p class="bg-info">

@@ -1,6 +1,7 @@
 class DoctorsController < ApplicationController
   before_action :signed_in_doctor, only: [:edit, :update]
   before_action :correct_doctor, only: [:edit, :update]
+  require 'important_order'
 
   def index
     @doctors = Doctor.search(params[:search])
@@ -8,6 +9,7 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
+    @ordered_users = order(@doctor.users)
   end
 
   def new
@@ -15,6 +17,11 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+  end
+
+  def find_similar
+    @user = User.find(params[:id])
+    redirect_to @user
   end
 
   def open

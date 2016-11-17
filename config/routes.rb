@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :doctors, only: [:index, :show, :new, :edit, :create, :update] do
     resources :calls
     member do
+      get 'find_similar'
       get 'open'
       get 'close'
     end
