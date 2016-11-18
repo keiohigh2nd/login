@@ -1,7 +1,84 @@
 <h4>うつ病のスクリーニング検診です</h4>
-<%= form_tag({controller: "users", action: "collect_screen" }, {method: "get"}) do %>
-  <%= hidden_field_tag :title, "胃がん" %>
-  <%= check_box :check, :value => 1 %>
-  <%= submit_tag "作成" %> 
+<div  class="container">
+  <%= form_tag({controller: "users", action: "collect_screen" }, {method: "get"}) do %>
+    <%= hidden_field_tag :title, "うつ病" %>
+    <table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+          <th>#</th>
+          <th>全くない</th>
+          <th>数日</th>
+          <th>半分以上</th>
+          <th>ほとんど毎日</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>物事に対してほとんど興味がない、または楽しめない</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>気分が落ち込む、憂うつになる、または絶望的な気持ちになる</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>寝付きが悪い、途中で目がさめる、または逆に眠り過ぎる</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>疲れた感じがする、または気力がない</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>あまり食欲がない、または食べ過ぎる</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>自分はダメな人間だ、人生の敗北者だと気に病む、または、自分自身あるいは家族に申し訳がないと感じる</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>新聞を読む、またはテレビを見ることなどに集中することが難しい</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>他人が気づくぐらいに動きや話し方が遅くなる、あるいは反対に、そわそわしたり、落ちつかず、ふだんよりも動き回ることがある</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+      <tr>
+        <td>死んだ方がましだ、あるいは自分を何らかの方法で傷つけようと思ったことがある</td>
+        <td><%= check_box :check, :value => 1  %></td>
+        <td><%= check_box :check, :value => 2  %></td>
+        <td><%= check_box :check, :value => 3  %></td>
+        <td><%= check_box :check, :value => 4  %></td>
+      </tr>
+    </tbody>
+    </table>
+  <%= submit_tag "終了" %> 
 <% end %>
+</div>
 

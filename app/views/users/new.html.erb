@@ -31,13 +31,21 @@
     <h3>医療情報を簡単にまとめます</h3></br>
 あなたの医療情報を医師とのチャットも含めて全て綺麗にまとめます。その情報を用いて、別の病院や医師に簡単に自分のことを見せられます。</br>
     <h3>緊急連絡先を管理します</h3></br>
-またもしあ>なたが交通事故などで意識を失った場合、搬送先の医師があなたの健康保険証or運転免許証の5桁でアクセスできるようになります。
+またもしあなたが交通事故などで意識を失った場合、搬送先の医師があなたの健康保険証、または運転免許証の5桁でアクセスできるようになります。
   </div>
 
 
 <%= form_for(@user) do |f| %>
       <%= f.label :name, 'お名前'%>
       <%= f.text_field :name ,class:"form-control",placeholder:"苗字だけやハンドルネームも可" %></br>
+
+      <%= f.label :sex, '男性' %>
+      <%= f.check_box :sex, { :checked => false }, 3, 0 %>
+      <%= f.label :sex, '女性' %>
+      <%= f.check_box :sex, { :checked => false }, 1, 0 %></br></br>
+
+      <%= f.label :age, 'ご年齢' %>
+      <%= f.number_field :age ,class:"form-control" %></br>
 
       <%= f.label :emergence, '緊急連絡先(必ずしも必要ではありません)' %>
       <%= f.text_field :emergence ,class:"form-control",placeholder:"母や息子などの電話番号" %></br>

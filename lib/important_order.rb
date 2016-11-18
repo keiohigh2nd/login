@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
 def order(users)
-  p users
   ordered_users = []
+  tmp = 0
   for user in users do 
-    tmp = 0
-    for n in user.notes[-3,3] do 
+    if user.notes.length < 1
+      ordered_users.push(user)
+      next
+    end 
+    for n in user.notes[-1,1] do 
       if n.note.include?("胸") == true
         ordered_users.unshift(user)
         tmp = 1

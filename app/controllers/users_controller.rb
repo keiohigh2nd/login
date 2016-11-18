@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    f = File.open("data/note_#{@user.id}.txt", "w")
+    for un in @user.notes
+      f.puts un.note
+    end
+    f.close
     if signed_in_doctor?
       @doctors = @user.doctors
       @doctor = current_doctor
@@ -80,7 +85,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :emergence, :adress, :password, :password_confirmation)
+      params.require(:user).permit(:name, :age, :sex, :email, :emergence, :adress, :password, :password_confirmation)
     end
 
     def correct_user

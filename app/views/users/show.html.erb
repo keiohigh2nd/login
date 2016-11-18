@@ -8,6 +8,12 @@
   <h3>緊急連絡先: <%= @user.emergence %></h3>
   <h3>名前: <%= @user.name %></h3>
   <h3>希望所在地: <%= @user.name %></h3>
+  <% if @user.sex == 0 %>
+    <h4> 性別: 男 </h4>
+  <% elsif @user.sex == 1 %>
+    <h4> 性別: 女 </h4>
+  <% end %>
+   <h4> 年齢: <%= @user.age %> </h4>
   <% if current_user?(@user) %>
     <p><%= link_to 'ユーザー情報の編集', edit_user_path, class: "btn btn-default btn-sm"%></p>
   <% end %>

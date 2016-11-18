@@ -7,7 +7,9 @@ def medic?(text)
     return 1
   elsif text.include?("疲") == true
     return 1
-  elsif text.include?("すか") == true
+  elsif text.include?("息") == true
+    return 1
+  elsif text.include?("血") == true
     return 1
   else
     return 0

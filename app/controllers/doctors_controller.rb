@@ -21,7 +21,17 @@ class DoctorsController < ApplicationController
 
   def find_similar
     @user = User.find(params[:id])
-    redirect_to @user
+    sim_id = @user.id
+    File.open("build/similar_list.txt") do |file|
+      file.each_line do |line| 
+        p line[0]
+        if line[1] == @user.id
+          sim_id = line[0]
+          break
+        end
+      end
+    end 
+    redirect_to User.find(sim_id)
   end
 
   def open

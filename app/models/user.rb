@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+    if search
       User.where(['name LIKE ?', "%#{search}%"])
     else
       User.all

@@ -6,9 +6,7 @@ This is introduction
 <% @doctors.each do |doctor| %>
    <li class="list-group-item">
     <%= link_to doctor.name, doctor %> / <%= doctor.speciality %> / <%= doctor.adress %>
-    <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
-      <%= submit_tag :お気に入り, class: "btn btn-default btn-sm"  %>
-    <% end %></li>
+    </li>
 <% end %>
 </ul>
 

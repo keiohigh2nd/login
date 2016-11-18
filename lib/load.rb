@@ -9,8 +9,16 @@ def answer(text)
     return "いつからですか？頭痛や胸痛はありますか?"
   elsif text.include?("熱") == true
     return "熱は何度ですか?"
-  elsif text.include?("お腹が痛い") == true
+  elsif text.include?("腹が痛い") == true
     return "吐き気はしますか?"
+  elsif text.include?("苦しい") == true
+   return "いつからですか？なるべく早く来院して下さい"
+  elsif text.include?("失神") == true
+   return "心臓の病気はお持ちですか？"
+  elsif text.include?("便秘") == true
+   return "最近、体重は減っていますか"
+  elsif text.include?("気持ち悪い") == true
+   return "妊娠されていますか"
   elsif text.include?("痛") == true
     return "何時頃からですか? またどの程度痛みますか?"
   else
