@@ -18,25 +18,26 @@
 </div>
 
 <div class="main_right">
-  <div class="login">
-  <div class="alert alert-success" role="alert">
-  ユーザーログイン
-  </div>
-  <%= form_for(:session, url: sessions_path) do |f| %>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#tab1" data-toggle="tab">患者</a></li>
+  <li><a href="#tab2" data-toggle="tab">医師</a></li>
+</ul>
+
+
+<div class="tab-content">
+  <div class="tab-pane active" id="tab1">
+    <%= form_for(:session, url: sessions_path) do |f| %>
       <%= f.text_field :name ,class:"form-control",placeholder:"名前"%><br>
       <%= f.password_field :password,class:"form-control",placeholder:"5ケタ番号" %><br>
-    <%= f.submit :ログインする, :class=> "btn btn-default"  %>
-  <% end %>
+      <%= f.submit :ログインする, :class=> "btn btn-default"  %>
+    <% end %>
+  </div>
+  <div class="tab-pane" id="tab2">
+    <%= form_for(:dsession, url: d_sessions_path) do |f| %>
+      <%= f.text_field :email ,class:"form-control",placeholder:"メールアドレス" %></br>
+      <%= f.password_field :password ,class:"form-control",placeholder:"パスワード" %></br>
+      <%= f.submit :ログインする, :class=> "btn btn-default"  %>
+    <% end %>
+  </div>
 </div>
-
-  <div class="d_login">
-  <div class="alert alert-info" role="alert">
-  医師ログイン
-  </div>
-  <%= form_for(:dsession, url: d_sessions_path) do |f| %>
-    <%= f.text_field :email ,class:"form-control",placeholder:"メールアドレス" %>
-    <%= f.password_field :password ,class:"form-control",placeholder:"パスワード" %><br>
-    <%= f.submit :ログインする, :class=> "btn btn-default"  %>
-  <% end %>
-  </div>
 </div>

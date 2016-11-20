@@ -1,0 +1,23 @@
+
+.main {
+  float: left;
+  width: 300px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+} 
+
+
+.ample {
+  float: right;
+  width: 350px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+.bar {
+  width: 800px;
+  float: right;
+}
+

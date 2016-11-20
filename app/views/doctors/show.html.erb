@@ -1,52 +1,44 @@
 <%= stylesheet_link_tag "doctor_home", :media => "all" %>
 
-<div class="main">
+<% if not signed_in_doctor? %>
+  <div class="main">
     <h3>名前: <%= @doctor.name %></h3>
     <h3>場所: <%= @doctor.adress %></h3>
     <h3>専門: <%= @doctor.speciality %></h3>
-    <h3>過去に受け持った患者数: <%= @doctor.users.length %></h3> 
-    <% if signed_in_doctor? %>
-      <% if @doctor==current_doctor %>
-      <p><%= link_to '編集', edit_doctor_path, class: "btn btn-primary btn-md" %></p>
-      <% end %>
-    <% end %>
-</div>
-
-
-<% if not signed_in_doctor? %>
+    <h3>過去に受け持った患者数: <%= @doctor.users.length %></h3>
+  </div>
   <%= form_tag({controller: "users", action: "favorite" }, {method: "get"}) do %>
     <%= submit_tag "お気に入りに登録する", :class=> "btn btn-primary" %>
   <% end %>
-<% end %>
-
-<% if @doctor==current_doctor %>
+<% else %>
+  <% if @doctor==current_doctor %>
   <div class="open_tag">
     <%= link_to "患者情報", { :controller => :users, :action => :index }, :class=>"btn btn-info" %> //
+    <%= link_to 'プロフィール編集', edit_doctor_path, class: "btn btn-primary btn-md" %></p>
+  </div>
+
+  <div class="patient">
     <% if @doctor.openflag == 0 %>
-      <h4>あなたは現在、患者を受け入れていません</h4>
       <%= form_tag({controller: "doctors", action: "open" }, {method: "get"}) do %>
         <div class="f_button">
           <%= submit_tag "Open", :class=> "btn btn-default" %>
         </div>
       <% end %>
+      <h4>あなたは現在、患者を受け入れていません</h4>
     <% else %>
-　　　<h4>現在、患者を受け入れています</h4>
       <%= form_tag({controller: "doctors", action: "close" }, {method: "get"}) do %>
         <div class="f_button">
           <%= submit_tag "Close" , :class=> "btn btn-success" %>
         </div>
       <% end %>
+　　　<h4>現在、患者を受け入れています</h4>
     <% end %>
-  </div>
-
-
-  <div class="patient">
-  <% if current_doctor=(@doctor) %>
+    </br>
     <h2>担当患者</h2>
     <% if @doctor.users.length == 0 %>
       現在、担当患者はおりません
     <% end %>
-
+    </br>
     <ul class="list-group">
     <% @ordered_users.each do |user| %>
       <li class="list-group-item"><%= link_to user.name, { :controller => :users, :action => :show, :id => user.id } %> 
@@ -57,5 +49,5 @@
     </ul>
   <% end %>
   </div>
-
 <% end %>
+

@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag "summary_home", :media => "all" %>
- <h1>あなたの医療情報のまとめ</h1>
- <% @user = User.find(params[:user_id]) %>
- <div class="main">
+ <% @user = User.find(params[:id]) %>
+<div class="main">
   <% if not @user.pushs.length == 0 %>
     <% @notification = "#{@user.pushs.length}件の通知" %>
     <% @url_push = "/users/#{@user.id}/pushes"%>
@@ -22,7 +21,6 @@
 </div>
 
 <div class="ample">
-  <h4> 患者基本情報</h4>
   <% @user.questions.each do |question| %>
     <table class="table table-striped table-bordered">
       <tr>

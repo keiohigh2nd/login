@@ -15,7 +15,7 @@
 
 .notes {
   float: right;
-  width: 750px;
+  width: 350px;
   margin-top: 30px;
   margin-right: 20px;
 }
@@ -24,7 +24,6 @@
   width: 350px;
   float: right;
   margin-right: 20px;
-  margin-top: 30px;
 }
 
 .bar {
@@ -40,12 +39,11 @@
 }
 
 .talk {
-  width: 800px;
-  margin-bottom: 40px;
+  width: 300px;
+  margin-bottom: 20px;
   margin-top: 50px;
 
 }
-
 .f_button {
   float: right;
   width: 50px;
@@ -62,16 +60,16 @@
 }
 
 .doctor {
-  width: 700px;
+  width: 250px;
   margin-right: 20px;
   text-align: left;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .patient {
-  width: 700px;
+  width: 250px;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: right;
 }
 

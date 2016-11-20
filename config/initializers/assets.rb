@@ -14,6 +14,7 @@ Rails.application.config.assets.precompile += %w( user_home_mobile.css )
 Rails.application.config.assets.precompile += %w( nv.d3.css )
 Rails.application.config.assets.precompile += %w( d3.v3.min.js )
 Rails.application.config.assets.precompile += %w( nd.d3 )
+Rails.application.config.assets.precompile += %w( summary_home.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
