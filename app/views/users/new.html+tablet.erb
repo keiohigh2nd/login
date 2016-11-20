@@ -29,28 +29,38 @@
   </div>
   <div class="sumup">
     <h3>医療情報を簡単にまとめます</h3></br>
-あなたの医療情報を医師とのチャットも含めて全て綺麗にまとめます。その情報を用いて、別の病院や医師に簡単に自分のことを見せられます。</br>またもしあなたが交通事故などで意識を失った場合、搬送先の医師があなたの健康保険証or運転免許証の5桁でアクセスできるようになります。
+あなたの医療情報を医師とのチャットも含めて全て綺麗にまとめます。その情報を用いて、別の病院や医師に簡単に自分のことを見せられます。</br>
+    <h3>緊急連絡先を管理します</h3></br>
+またもしあなたが交通事故などで意識を失った場合、搬送先の医師があなたの健康保険証、または運転免許証の5桁でアクセスできるようになります。
   </div>
 
 
 <%= form_for(@user) do |f| %>
       <%= f.label :name, 'お名前'%>
-      <%= f.text_field :name ,class:"form-control",placeholder:"苗字だけでも可" %>
+      <%= f.text_field :name ,class:"form-control",placeholder:"苗字だけやハンドルネームも可" %></br>
 
-      <%= f.label :email, 'メールアドレス' %>
-      <%= f.text_field :email ,class:"form-control",placeholder:"運営からのサービスに関する連絡のみでしか使用しません" %>
+      <%= f.label :sex, '男性' %>
+      <%= f.check_box :sex, { :checked => false }, 3, 0 %>
+      <%= f.label :sex, '女性' %>
+      <%= f.check_box :sex, { :checked => false }, 1, 0 %></br></br>
 
-      <%= f.label :emergence, '緊急連絡先' %>
-      <%= f.text_field :emergence ,class:"form-control",placeholder:"母や息子などの電話番号" %>
+      <%= f.label :age, 'ご年齢' %>
+      <%= f.number_field :age ,class:"form-control" %></br>
+
+      <%= f.label :emergence, '緊急連絡先(必ずしも必要ではありません)' %>
+      <%= f.text_field :emergence ,class:"form-control",placeholder:"母や息子などの電話番号" %></br>
 
       <%= f.label :adress, '希望する地域や場所' %>
-      <%= f.text_field :adress ,class:"form-control",placeholder:"最寄駅やお住いの場所など" %>
+      <%= f.text_field :adress ,class:"form-control",placeholder:"最寄駅やお住いの場所など" %></br>
 
       <%= f.label :password, 'パスワード' %>
-      <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証や運転免許証の下5ケタで" %>
+      <%= f.password_field :password ,class:"form-control",placeholder:"健康保険証や運転免許証の下5ケタで" %></br>
 
       <%= f.label :password_confirmation, '確認' %>
-      <%= f.password_field :password_confirmation ,class:"form-control",placeholder:"もう一度パスワードの確認" %>
+      <%= f.password_field :password_confirmation ,class:"form-control",placeholder:"もう一度パスワードの確認" %></br>
+
+      <%= f.label :email, 'メールアドレス(必ずしも必要ではありません)' %>
+      <%= f.text_field :email ,class:"form-control",placeholder:"運営からのサービスに関する連絡のみでしか使用しません" %></br>
 
   <div class="box_srcollbar">
     このサービスでは一切お金はかかりません。また緊急時に閲覧するのは医師のみです。このサービスでは、医師に対して医学・医療の質問ができるサービスであり、診療行為またはこれに準ずる行為を目的として利用することはできません。医師による回答は治療行為ではありません。お客様はこのことを十分認識したうえで自己の責任においてサービスを利用し、必要ならば適切な医療機関の受診等、自身の判断で行ってください。実際に医療機関を受診する際も、治療方法、薬の内容等、担当の医師によく相談、確認するようにお願い致します。医師による回答により何らかの不都合、不利益が発生し、また、損害を被った場合でも、当社はそれに対し一切の責任を負いませんので予めご了承ください。

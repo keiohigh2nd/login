@@ -1,8 +1,13 @@
 <%= stylesheet_link_tag "user_home", :media => "all" %>
+<script type="text/javascript">
+  window.onload = function(){
+    $(".talk").scrollTop($(".talk")[0].scrollHeight);
+  }
+</script>
+
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#tab1" data-toggle="tab">Chat</a></li>
-  <li><a href="#tab2" data-toggle="tab">Function</a></li>
   <li><a href="#tab3" data-toggle="tab">Summary</a></li>
 </ul>
 
@@ -10,25 +15,6 @@
 <div class="tab-content">
   <div class="tab-pane active" id="tab1">
     <div class="notes">
-      <p>
-      <%= form_for([@user, @user.notes.build]) do |f| %>
-      <%= f.text_area :note ,class:"form-control",placeholder:"ご気分はどうですか" %>
-
-      <% if signed_in_doctor? %>
-        <%= f.hidden_field :flag, :value => 2 %>
-        <div class="f_check">
-          もし患者に非表示にするには、</br>チェックを入れてください
-          <%= f.check_box :flag, { :checked=>false }, 4, 2 %>
-        </div>
-      <% else %>
-        <%= f.hidden_field :flag, :value => 1 %>
-      <% end %>
-      <div class="f_button">
-        <%= f.submit :書く, class: "btn btn-default btn-md"  %>
-      </div>
-      <% end %>
-      </p>
-      </br>
       <div class="talk">
       <% @user.notes.each do |note| %>
         <% if note.flag == 2  then %>
@@ -63,74 +49,24 @@
         <% end %>
       <% end %>
       </div>
-    </div>
-  </div>
+      <p>
+      <%= form_for([@user, @user.notes.build]) do |f| %>
+      <%= f.text_area :note ,class:"form-control",placeholder:"ご気分はどうですか" %>
 
-  <div class="tab-pane" id="tab2">
-    <div class="fav">
-    <% if current_user?(@user) %>
-      <%= link_to "医師検索", { :controller => :doctors, :action => :index }, :class=>"btn btn-info" %> /
-      <%= link_to "推薦医師", { :controller => :users, :action => :recommendation, :id => @user.id }, :class=>"btn btn-success" %> /
-      <% @url_screen = "/users/#{@user.id}/screenings"%>
-      <%= link_to "検査一覧", "#{@url_screen}", :class=>"btn btn-primary" %>
-    <% end %>
-    <% if signed_in_doctor? %>
-      <%= link_to "類似患者の検索", { :controller => :doctors, :action => :find_similar }, :class=>"btn btn-info" %>
-      <% @url_sum = "/users/#{@user.id}/summaries"%>
-      <%= link_to "まとめ", "#{@url_sum}", :class=>"btn btn-warning" %>
-    <% end %>
-    <h3>担当医</h3>
-    <% @user.doctors.each do |ud| %>
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-success"><%= link_to ud.name, ud %></li>
-      </ul>
-    <% end %>
-    </div>
-
-    <div class="alert">
-    <% if signed_in_doctor? %>
-      <h4>アラートの作成</h4>
-      <%= form_for([@user, @user.alerts.build]) do |f| %>
-      <p>
-      <%= f.text_area :title ,class:"form-control", placeholder:"その時確認したいこと" %>
-      </p>
-      <p>
-      <%= f.text_area :context ,class:"form-control", placeholder:"内容,例えば再びかゆみが出たら、来てくださいなど" %>
-      </p>
-      <p>
-      <%= f.label :通知日 %><br>
-      <%= f.datetime_field :when  %>
-      </p>
-      <p>
-      <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
-      <%= f.label :検査項目 %><br>
-      <%= f.collection_select :screen_id, ScreenType.all, :id, :title, include_blank: true %>
-      </p>
-      <%= f.submit :作成, class: "btn btn-default btn-sm" %>
+      <% if signed_in_doctor? %>
+        <%= f.hidden_field :flag, :value => 2 %>
+        <div class="f_check">
+          もし患者に非表示にするには、</br>チェックを入れてください
+          <%= f.check_box :flag, { :checked=>false }, 4, 2 %>
+        </div>
+      <% else %>
+        <%= f.hidden_field :flag, :value => 1 %>
       <% end %>
-    <% end %>
-
-    </br>
-    <h4>現在のアラート</h4>
-    <% @user.alerts.each do |ud| %>
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-success">
-        <% if ud.doctor_id %>
-          <% @doc = Doctor.find(ud.doctor_id) %>
-          <%= ud.when %>まで from <%= @doc.name %>
-        <% else %>
-          <%= ud.when %> まで
-        <% end %>
-        </br>
-        <%= ud.title %></br>
-        <%= ud.context %></br>
-        <% if ud.screen_id %>
-          <% @url_screen = "/screen_types/#{ud.screen_id}"%>
-          <%= link_to "検査", "#{@url_screen}"  %>
-        <% end %>
-        </li>
-      </ul>
-    <% end %>
+      <div class="f_button">
+        <%= f.submit :書く, class: "btn btn-default btn-md"  %>
+      </div>
+      <% end %>
+      </p>
     </div>
   </div>
 
