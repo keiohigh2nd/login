@@ -12,7 +12,17 @@ class NotesController < ApplicationController
     end
     @push = @user.pushs.new()
     @push.save
+    if not params[:ajax_handler].blank?
+      ajax_action(@user)
+    end
     redirect_to user_path(@user)
+  end
+
+  def ajax_action(user)
+   if params[:ajax_handler] == 'handle_name1'
+      # Ajaxの処理
+      @user = user
+    end
   end
 
   private

@@ -7,9 +7,6 @@ class UsersController < ApplicationController
   def index
       @users = current_doctor.users
       @users = @users.search(params[:search])
-      @value1 = 3
-      @value2 = 6
-      @value3 = 9
   end
 
   def show

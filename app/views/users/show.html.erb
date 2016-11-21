@@ -63,6 +63,7 @@
         <%= f.hidden_field :flag, :value => 1 %>
       <% end %>
       <div class="f_button">
+        <%= hidden_field_tag :ajax_handler, 'handle_name1' -%>
         <%= f.submit :書く, class: "btn btn-default btn-md"  %>
       </div>
       <% end %>

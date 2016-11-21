@@ -45,4 +45,8 @@ Rails.application.routes.draw do
   resources :qbase
   #root 'users#index'
   root 'sessions#new'
+
+  Rails.application.routes.draw do
+    post '/callback' => 'webhook#callback'
+  end
 end
