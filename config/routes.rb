@@ -46,7 +46,5 @@ Rails.application.routes.draw do
   #root 'users#index'
   root 'sessions#new'
 
-  Rails.application.routes.draw do
-    post '/callback' => 'webhook#callback'
-  end
+  post '/callback' => 'webhook#callback'
 end
