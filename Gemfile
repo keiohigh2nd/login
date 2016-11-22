@@ -35,7 +35,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "faraday"
 gem "faraday_middleware"
-gem 'line-bot-api'
 gem 'dotenv-rails'
 
 group :production do
