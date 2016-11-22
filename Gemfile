@@ -36,6 +36,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem "faraday"
 gem "faraday_middleware"
 gem 'line-bot-api'
+gem 'dotenv-rails'
+
+group :production do
+  gem 'rails_12factor'
+end
+
 
 gem 'therubyracer'
 gem 'less-rails'
@@ -43,7 +49,6 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/
 gem 'execjs'
 gem 'rb-readline'
 gem 'bootstrap', '~> 4.0.0.alpha3'
-
 
 
 # Use Capistrano for deployment
