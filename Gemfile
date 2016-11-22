@@ -9,7 +9,7 @@ group :production do
 end
 group :development, :test do
   gem 'sqlite3'
-  gem 'sqlite3-ruby', :require => 'sqlite3' ※ これはインストールしている場合に必要
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
