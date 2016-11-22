@@ -3,8 +3,8 @@ class WebhookController < ApplicationController
 
   CHANNEL_ID = ENV['1489157503']
   CHANNEL_SECRET = ENV['e912a24372815b3127ecaaceb18580c7']
-  CHANNEL_MID = ENV['keivard0501']
-  OUTBOUND_PROXY = ENV['52.42.97.218']
+  CHANNEL_MID = ENV['doctorQ']
+  OUTBOUND_PROXY = ENV['http://fixie:zaJI91NaGGitq9d@velodrome.usefixie.com:80']
 
   def callback
     unless is_validate_signature
