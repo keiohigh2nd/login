@@ -8,8 +8,11 @@ class WebhookController < ApplicationController
   CHANNEL_ACCESS_TOKEN = ENV['CHANNEL_ACCESS_TOKEN']
 
   def data_save(userid)
+    p "oppai"
     @user = User.create(name: userid)
-    @user.save
+    if @user.save
+      p 'saved'
+    end
   end
 
   def callback
