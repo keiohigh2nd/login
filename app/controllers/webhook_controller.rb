@@ -9,7 +9,8 @@ class WebhookController < ApplicationController
 
   def data_save(userid)
     p "oppai"
-    @user = User.create(name: userid)
+    p userid
+    @user = User.new(name: userid)
     if @user.save
       p 'saved'
     end
