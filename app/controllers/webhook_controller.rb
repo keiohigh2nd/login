@@ -1,10 +1,16 @@
 class WebhookController < ApplicationController
   require 'load'
+  require 'save'
   protect_from_forgery with: :null_session # CSRF対策無効化
 
   CHANNEL_SECRET = ENV['CHANNEL_SECRET']
   OUTBOUND_PROXY = ENV['OUTBOUND_PROXY']
   CHANNEL_ACCESS_TOKEN = ENV['CHANNEL_ACCESS_TOKEN']
+
+  def data_save(userid)
+    @user = User.new(name: userid)
+    @user.save
+  end
 
   def callback
     unless is_validate_signature
@@ -14,10 +20,12 @@ class WebhookController < ApplicationController
     event = params["events"][0]
     event_type = event["type"]
     replyToken = event["replyToken"]
+    userid = event["replyToken"]["source"]["userId"]
 
     case event_type
     when "message"
       input_text = event["message"]["text"]
+      data_save(userid)
       output_text = main_answer(input_text)[0]
     end
 
