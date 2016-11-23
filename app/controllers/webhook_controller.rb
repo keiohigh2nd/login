@@ -10,7 +10,9 @@ class WebhookController < ApplicationController
   def data_save(userid)
     p "oppai"
     p userid
-    user = User.new(userid)
+    user = User.new(name:userid)
+    user.save
+    user = User.build(name:userid)
     user.save
   end
 
