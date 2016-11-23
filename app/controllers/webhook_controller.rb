@@ -11,6 +11,7 @@ class WebhookController < ApplicationController
     p "oppai"
     p userid
     @user = User.new()
+    @user.save
   end
 
   def callback
