@@ -42,6 +42,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def create_simple
+    @user = User.new(name: userid)
+    @user.save
+  end
+
   def update
     if @user.update_attributes(user_params)
       redirect_to @user

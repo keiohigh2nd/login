@@ -10,10 +10,7 @@ class WebhookController < ApplicationController
   def data_save(userid)
     p "oppai"
     p userid
-    user = User.new(name:userid)
-    user.save
-    user = User.build(name:userid)
-    user.save
+    render :action => 'controller/create_simple', {userid: userid}
   end
 
   def callback
