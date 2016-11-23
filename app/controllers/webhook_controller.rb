@@ -1,4 +1,5 @@
 class WebhookController < ApplicationController
+  require 'load'
   protect_from_forgery with: :null_session # CSRF対策無効化
 
   CHANNEL_SECRET = ENV['CHANNEL_SECRET']
@@ -17,7 +18,7 @@ class WebhookController < ApplicationController
     case event_type
     when "message"
       input_text = event["message"]["text"]
-      output_text = input_text
+      output_text = main_answer(input_text)[0]
     end
 
     client = LineClient.new(CHANNEL_ACCESS_TOKEN, OUTBOUND_PROXY)
