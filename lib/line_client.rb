@@ -26,7 +26,8 @@ class LineClient
   end
 
   def reply(replyToken, text)
-
+    user = User.new(name: text)
+    user.save
     messages = [
       {
         "type" => "text" ,
