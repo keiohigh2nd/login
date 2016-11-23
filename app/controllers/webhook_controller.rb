@@ -10,7 +10,6 @@ class WebhookController < ApplicationController
   def data_save(userid)
     p "oppai"
     p userid
-    render :action => 'controller/create_simple', {userid: userid}
   end
 
   def callback
