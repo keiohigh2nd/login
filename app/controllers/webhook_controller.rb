@@ -8,7 +8,7 @@ class WebhookController < ApplicationController
   CHANNEL_ACCESS_TOKEN = ENV['CHANNEL_ACCESS_TOKEN']
 
   def data_save(userid)
-    @user = User.new(name: userid)
+    @user = User.create(name: userid)
     @user.save
   end
 
